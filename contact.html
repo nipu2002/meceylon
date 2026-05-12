@@ -1,0 +1,688 @@
+<?php
+// PHP Form Handling
+$success_message = '';
+$error_message = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $subject = htmlspecialchars($_POST['subject']);
+    $message = htmlspecialchars($_POST['message']);
+    
+    // Basic validation
+    if (!empty($name) && !empty($email) && !empty($message)) {
+        $success_message = "Thank you $name! We'll get back to you soon.";
+        
+        // Optional: Send email (uncomment and configure for production)
+        /*
+        $to = "info@yourcompany.com";
+        $headers = "From: $email\r\n";
+        $headers .= "Reply-To: $email\r\n";
+        mail($to, $subject, $message, $headers);
+        */
+    } else {
+        $error_message = "Please fill in all required fields.";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Sri Lanka Factory Locations</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <!-- Leaflet CSS for Maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        /* Custom styles - Remove blue color from all links */
+        a {
+            color:  #fbb264;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color:  #fbb264;
+            text-decoration: underline;
+        }
+
+       
+  
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: white;
+      overflow-x: hidden;
+      color: #080a09;
+      padding-top: 100px;
+     
+      background-blend-mode:screen;
+    }
+    a {
+    color: black;
+    text-decoration: none;
+}
+    h1, h2, h3, h4, h5, .logo-text {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Premium Navbar */
+    .premium-nav {
+      
+       background: rgb(235, 162, 36);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      transition: all 0.3s;
+    }
+    
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #63c46e 0%, #61a34f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+    .brand-logo{
+      max-height: 60px;
+      width:auto;
+      margin-right: 10px;
+    }
+    .nav-link-premium {
+      font-weight: 500;
+      color: #4A3729 !important;
+      margin: 0 0.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+    }
+    
+    .nav-link-premium:hover {
+      color: #CB7B3C !important;
+    }
+    
+    .nav-link-premium::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #CB7B3C, #E8B56A);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link-premium:hover::after {
+      width: 100%;
+    }
+    
+    .cart-badge-premium {
+      background: linear-gradient(135deg, #5cbb55, #3d8340);
+      color: white;
+      border-radius: 30px;
+      padding: 0 8px;
+      font-size: 0.7rem;
+      margin-left: 6px;
+      font-weight: 600;
+    }
+
+    /* ===== HOVER DROPDOWN STYLES ===== */
+        @media (min-width: 992px) {
+            /* Make dropdown appear on hover */
+            .dropdown:hover .dropdown-menu {
+                display: block;
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            /* Initially hide dropdown */
+            .dropdown .dropdown-menu {
+                display: block;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(10px);
+                transition: all 0.2s ease;
+                margin-top: 0;
+                border-radius: 8px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                border: none;
+            }
+            
+            /* Keep dropdown visible when hovering over it */
+            .dropdown-menu:hover {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            /* Rotate arrow on hover */
+            .dropdown:hover .dropdown-toggle::after {
+                transform: rotate(180deg);
+            }
+            
+            .dropdown-toggle::after {
+                transition: transform 0.2s;
+            }
+            
+            /* Style dropdown items */
+            .dropdown-item {
+                padding: 8px 20px;
+                transition: all 0.2s;
+            }
+            
+            .dropdown-item:hover {
+                background-color: #f8f9fa;
+                color: #CB7B3C;
+                padding-left: 25px;
+            }
+        }
+        
+        /* Mobile: Keep click functionality */
+        @media (max-width: 991px) {
+            .dropdown-menu {
+                border: none;
+                box-shadow: none;
+                background: #f8f9fa;
+                margin-left: 15px;
+            }
+        }
+    
+
+    .contact-page-header{
+    
+    height: 15vh;
+    background-position: relative;
+    text-align: center;
+    padding-top: 20px;
+    background-color: #e9f1c7ac;
+    
+   /* background: linear-gradient(135deg, #184e09fd, #ff8c42);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color:transparent;
+            letter-spacing: -0.02em;*/
+    }
+        /* Factory cards styling */
+        .factory-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: wheat;
+            cursor: pointer;
+        }
+
+        .factory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+
+        /* Form styling */
+        .form-control:focus {
+            border-color:  #fbb264;
+            box-shadow: 0 0 0 0.2rem  #f79b39(13, 110, 253, 0.25);
+        }
+
+        /* Button styling */
+        .btn-primary {
+            background-color:  #fbb264;
+            border: none;
+            padding: 10px 30px;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color:  #fbb264;
+            transform: translateY(-2px);
+        }
+
+        /* Map container responsive */
+        #factoryMap {
+            z-index: 1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .factory-card {
+                margin-bottom: 15px;
+            }
+            
+            #factoryMap {
+                height: 350px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Card hover effects */
+        .card {
+            background: #97eca863;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
+        }
+
+        /* Social media icons styling */
+        .bi-facebook, .bi-twitter-x, .bi-linkedin, .bi-instagram {
+            transition: transform 0.2s ease;
+            color:  #fbb264;
+        }
+
+        .bi-facebook:hover, .bi-twitter-x:hover, 
+        .bi-linkedin:hover, .bi-instagram:hover {
+            transform: scale(1.2);
+        }
+
+        /* Alert styling */
+        .alert {
+            border-radius: 10px;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+
+        /* Footer Premium */
+    .footer-premium {
+      background: #1C140F;
+      color: #DCC9B5;
+      padding: 4rem 0 2rem;
+      border-top: 1px solid rgba(232, 181, 106, 0.2);
+    }
+    
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: rgba(220, 201, 181, 0.1);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      color: #DCC9B5;
+      margin-right: 0.8rem;
+    }
+    
+    .social-icon:hover {
+      background: #CB7B3C;
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+   
+    
+    /* Cart & Blog styling */
+    .blog-card-premium {
+      border-radius: 28px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    
+    .blog-card-premium:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(203, 123, 60, 0.15);
+    }
+    </style>
+</head>
+<body>
+
+<!-- Premium Navbar -->
+<nav class="navbar navbar-expand-lg premium-nav fixed-top">
+  <div class="container-fluid px-4 px-lg-5">
+    <a class="navbar-brand logo-text" href="#"><img src="images/MeCeylon_LOGO-01-1-1024x542.jpg" class="brand-logo" style="color: #CB7B3C;"></img></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#premiumNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="premiumNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="homee.html" data-page="home">Home</a></li>
+        <!-- Products Dropdown - Properly Structured -->
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-link-premium dropdown-toggle" href="#" id="productsDropdownLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-page="products">
+            Products
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="productsDropdownLink">
+            <li><a class="dropdown-item" href="#">Products Range</a></li>
+            <li><a class="dropdown-item" href="#">Buy Now</a></li>
+            <li><a class="dropdown-item" href="#"></a></li>
+            <li><a class="dropdown-item" href="#"></a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">All Products</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="aboutus.html" >About Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="contact.php" >Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="blogs">Blogs</a></li>
+       <!---- <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signup">Signup</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signin">Signin</a></li>------->
+        <li class="nav-item">
+          <a class="nav-link nav-link-premium" href="#" data-page="cart">
+            <i class="fas fa-shopping-bag"></i> Cart <span id="cartCountNav" class="cart-badge-premium">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Page Header -->
+<section class="contact-page-header">
+    <div class="container" >
+        <h1>Contact Us</h1>
+        <p class="lead">Get in touch with our factory locations across Sri Lanka</p>
+    </div>
+</section>
+
+<div class="container my-5">
+    <div class="row">
+        <!-- Contact Information Section -->
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">
+                        <i class="bi bi-info-circle-fill text-primary"></i> 
+                        Contact Info
+                    </h3>
+                    
+                    <div class="mb-4">
+                        <h5><i class="bi bi-telephone-fill text-primary"></i> Phone</h5>
+                        <p class="text-muted">+94 11 234 5678<br>+94 77 123 4567</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5><i class="bi bi-envelope-fill text-primary"></i> Email</h5>
+                        <p class="text-muted">info@srilankafactories.lk<br>sales@srilankafactories.lk</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5><i class="bi bi-clock-fill text-primary"></i> Business Hours</h5>
+                        <p class="text-muted">Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM<br>Sunday: Closed</p>
+                    </div>
+                    
+                    <div>
+                        <h5><i class="bi bi-globe"></i> Social Media</h5>
+                        <div class="mt-2">
+                            <a href="#" class="text-decoration-none me-3"><i class="bi bi-facebook fs-4"></i></a>
+                            <a href="#" class="text-decoration-none me-3"><i class="bi bi-twitter-x fs-4"></i></a>
+                            <a href="#" class="text-decoration-none me-3"><i class="bi bi-linkedin fs-4"></i></a>
+                            <a href="#" class="text-decoration-none"><i class="bi bi-instagram fs-4"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Form Section -->
+        <div class="col-lg-8 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">
+                        <i class="bi bi-envelope-paper-fill text-primary"></i> 
+                        Send Us a Message
+                    </h3>
+                    <!-------------
+                    <?php if ($success_message): ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php echo $success_message; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <?php if ($error_message): ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?php echo $error_message; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">----->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" name="subject">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-send"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Factory Locations with Live Map -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">
+                        <i class="bi bi-geo-alt-fill text-danger"></i> 
+                        Our Factory Locations in Sri Lanka
+                    </h3>
+                    <p class="text-muted mb-3">Click on markers to see factory details. We have 4 strategic locations across Sri Lanka.</p>
+                    
+                    <!-- Map Container -->
+                    <div id="factoryMap" style="height: 500px; width: 100%; border-radius: 10px;"></div>
+                    
+                    <!-- Factory Locations List -->
+                    <div class="row mt-4 g-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="factory-card p-3 border rounded">
+                                <h5><i class="bi bi-building"></i> Colombo Factory</h5>
+                                <p class="small text-muted mb-1">123 Main Street,<br>Colombo 01, Sri Lanka</p>
+                                <p class="small mb-0">📞 +94 11 234 5678</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="factory-card p-3 border rounded">
+                                <h5><i class="bi bi-building"></i> Kandy Factory</h5>
+                                <p class="small text-muted mb-1">45 Hill Street,<br>Kandy 20000, Sri Lanka</p>
+                                <p class="small mb-0">📞 +94 81 345 6789</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="factory-card p-3 border rounded">
+                                <h5><i class="bi bi-building"></i> Galle Factory</h5>
+                                <p class="small text-muted mb-1">78 Beach Road,<br>Galle 80000, Sri Lanka</p>
+                                <p class="small mb-0">📞 +94 91 456 7890</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="factory-card p-3 border rounded">
+                                <h5><i class="bi bi-building"></i> Jaffna Factory</h5>
+                                <p class="small text-muted mb-1">22 North Street,<br>Jaffna 40000, Sri Lanka</p>
+                                <p class="small mb-0">📞 +94 21 567 8901</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PREMIUM FOOTER -->
+<footer class="footer-premium mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h4 class="fw-bold mb-3"><i class="fas fa-seedling me-2"></i>MeCeylon</h4>
+        <p>Exporting the finest spices with integrity, sustainability, and passion since 2018.</p>
+        <div class="mt-3">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h6 class="fw-bold mb-3">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="eventcalendar.html" style="color: #DCC9B5; text-decoration: none;">Event Calendar</a></li>
+          <li class="mb-2"><a href="csr.html" style="color: #DCC9B5; text-decoration: none;">CSR & Sustainability
+          </a></li>
+          <li class="mb-2"><a href="certificate.html" style="color: #DCC9B5; text-decoration: none;">Certifications</a></li>
+          <li class="mb-2"><a href="#" data-page="blogs" class="footer-link" style="color: #DCC9B5; text-decoration: none;">Blogs</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold mb-3">Contact Info</h6>
+        <p><i class="fas fa-map-marker-alt me-2"></i> Colombo, Sri Lanka</p>
+        <p><i class="fas fa-phone-alt me-2"></i> +94 112 345 678</p>
+        <p><i class="fas fa-envelope me-2"></i> export@meceylon.com</p>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold mb-3">Newsletter</h6>
+        <p>Get spice updates & offers</p>
+        <div class="input-group">
+          <input type="email" id="footerEmail" class="form-control form-control-sm" placeholder="Email">
+          <button class="btn btn-sm btn-premium" id="footerSubs">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <hr class="mt-4" style="background: rgba(220,201,181,0.2);">
+    <div class="text-center small">© 2025 MeCeylon – Premium Spice Exporter. All Rights Reserved.</div>
+  </div>
+</footer>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Map Initialization Script -->
+<script>
+    // Initialize the map centered on Sri Lanka
+    var map = L.map('factoryMap').setView([7.8731, 80.7718], 8);
+    
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 18
+    }).addTo(map);
+    
+    // Factory locations data
+    var factories = [
+        {
+            name: "Colombo Factory",
+            lat: 6.9271,
+            lng: 79.8612,
+            address: "123 Main Street, Colombo 01",
+            phone: "+94 11 234 5678",
+            email: "colombo@srilankafactories.lk",
+            hours: "Mon-Fri: 8am-5pm"
+        },
+        {
+            name: "Kandy Factory",
+            lat: 7.2906,
+            lng: 80.6337,
+            address: "45 Hill Street, Kandy 20000",
+            phone: "+94 81 345 6789",
+            email: "kandy@srilankafactories.lk",
+            hours: "Mon-Fri: 8am-5pm"
+        },
+        {
+            name: "Galle Factory",
+            lat: 6.0328,
+            lng: 80.2168,
+            address: "78 Beach Road, Galle 80000",
+            phone: "+94 91 456 7890",
+            email: "galle@srilankafactories.lk",
+            hours: "Mon-Fri: 8am-5pm"
+        },
+        {
+            name: "Jaffna Factory",
+            lat: 9.6615,
+            lng: 80.0255,
+            address: "22 North Street, Jaffna 40000",
+            phone: "+94 21 567 8901",
+            email: "jaffna@srilankafactories.lk",
+            hours: "Mon-Fri: 8am-5pm"
+        }
+    ];
+    
+    // Add markers for each factory
+    factories.forEach(function(factory) {
+        var marker = L.marker([factory.lat, factory.lng]).addTo(map);
+        
+        // Create popup content
+        var popupContent = `
+            <div style="min-width: 200px;">
+                <h5 style="color: #fbb264; margin-bottom: 10px;">🏭 ${factory.name}</h5>
+                <hr style="margin: 5px 0;">
+                <p style="margin: 5px 0;">
+                    <strong>📍 Address:</strong><br>
+                    ${factory.address}
+                </p>
+                <p style="margin: 5px 0;">
+                    <strong>📞 Phone:</strong><br>
+                    ${factory.phone}
+                </p>
+                <p style="margin: 5px 0;">
+                    <strong>✉️ Email:</strong><br>
+                    ${factory.email}
+                </p>
+                <p style="margin: 5px 0;">
+                    <strong>🕒 Hours:</strong><br>
+                    ${factory.hours}
+                </p>
+            </div>
+        `;
+        
+        marker.bindPopup(popupContent);
+        
+        // Auto-open popup on hover
+        marker.on('mouseover', function() {
+            this.openPopup();
+        });
+    });
+    
+    // Add scale bar
+    L.control.scale().addTo(map);
+    
+    // Add zoom control to bottom right
+    map.zoomControl.setPosition('bottomright');
+</script>
+
+</body>
+</html>

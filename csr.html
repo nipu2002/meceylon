@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>SpiceRoots - CSR & Social Works | Ethical Spices, Real Impact</title>
+  <!-- Bootstrap 5 CSS + Icons + Google Fonts + AOS (optional but smooth) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+   <!-- Bootstrap 5 CSS + Icons + Google Fonts + AOS Library -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <body>
+     <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #f1d3ae34;
+      overflow-x: hidden;
+      color: #2D2A24;
+    }
+    
+    h1, h2, h3, h4, h5, .logo-text {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* Premium Navbar */
+    .premium-nav {
+      
+       background: #ffffffdd;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      transition: all 0.3s;
+    }
+    
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #9B4B2C 0%, #CB7B3C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+    .brand-logo{
+      max-height: 52px;
+      width:auto;
+      margin-right: 10px;
+    }
+    .nav-link-premium {
+      font-weight: 500;
+      color: #4A3729 !important;
+      margin: 0 0.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+    }
+    
+    .nav-link-premium:hover {
+      color: #CB7B3C !important;
+    }
+    
+    .nav-link-premium::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #CB7B3C, #E8B56A);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link-premium:hover::after {
+      width: 100%;
+    }
+    
+    .cart-badge-premium {
+      background: linear-gradient(135deg, #CB7B3C, #E8B56A);
+      color: white;
+      border-radius: 30px;
+      padding: 0 8px;
+      font-size: 0.7rem;
+      margin-left: 6px;
+      font-weight: 600;
+    }
+  
+ 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fefaf5;
+      color: #2c2418;
+    }
+
+    /* CSR Section Main Container */
+    .csr-section {
+      padding: 5rem 0;
+      background: linear-gradient(125deg, #fffaf2 0%, #fef1e4 100%);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* decorative spice elements */
+    .csr-section::before {
+      content: "🌿🌶️🍃✨";
+      font-size: 220px;
+      position: absolute;
+      bottom: -40px;
+      right: -30px;
+      opacity: 0.04;
+      pointer-events: none;
+      white-space: nowrap;
+      font-family: monospace;
+      transform: rotate(-5deg);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 2.8rem;
+      color: #9b4b2e;
+      letter-spacing: -0.5px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: #d67a3f;
+      border-radius: 4px;
+    }
+
+    .subhead {
+      font-size: 1.1rem;
+      color: #6b4c3b;
+      max-width: 700px;
+      margin: 1.2rem auto 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Card styles for pillars */
+    .csr-card {
+      background: #ffffffea;
+      backdrop-filter: blur(0px);
+      border-radius: 32px;
+      padding: 2rem 1.5rem;
+      transition: all 0.35s ease;
+      border: none;
+      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08);
+      height: 100%;
+      position: relative;
+      z-index: 2;
+      border-bottom: 4px solid transparent;
+    }
+
+    .csr-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 40px -18px rgba(155, 75, 46, 0.2);
+      border-bottom: 4px solid #d67a3f;
+      background: #ffffff;
+    }
+
+    .icon-circle {
+      width: 80px;
+      height: 80px;
+      background: #fae8df;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      transition: 0.3s;
+    }
+
+    .csr-card:hover .icon-circle {
+      background: #d67a3f;
+    }
+
+    .icon-circle i {
+      font-size: 2.6rem;
+      color: #b95f2e;
+      transition: 0.2s;
+    }
+
+    .csr-card:hover .icon-circle i {
+      color: white;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #3e2a21;
+      margin-bottom: 1rem;
+    }
+
+    .stat-number {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: #b95f2e;
+      line-height: 1.2;
+    }
+
+    /* Social Works Gallery Styles */
+    .social-works-section {
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .social-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #7a4a2e;
+    }
+
+    .social-header p {
+      color: #8b6b58;
+      max-width: 650px;
+      margin: 0.5rem auto 0;
+    }
+
+    .work-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      height: 100%;
+      border: 1px solid #ffe3d4;
+    }
+
+    .work-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 35px -12px rgba(155, 75, 46, 0.2);
+    }
+
+    .work-img {
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      transition: transform 0.5s;
+    }
+
+    .work-card:hover .work-img {
+      transform: scale(1.02);
+    }
+
+    .work-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+      padding: 1rem;
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .work-content {
+      padding: 1.5rem;
+    }
+
+    .work-title {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #3e2a21;
+      margin-bottom: 0.5rem;
+    }
+
+    .impact-stats {
+      background: #fef4ec;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #b45a2e;
+    }
+
+    /* Stats row counters */
+    .stats-wrapper {
+      background: #ffffffd9;
+      backdrop-filter: blur(2px);
+      border-radius: 60px;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+      border: 1px solid #ffede1;
+      margin: 2rem 0;
+    }
+
+    .single-stat {
+      text-align: center;
+      border-right: 1px solid #f0dbce;
+    }
+
+    .single-stat:last-child {
+      border-right: none;
+    }
+
+    .stat-digit {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #c46533;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* testimonial carousel */
+    .testimonial-area {
+      background: #ffffffcc;
+      backdrop-filter: blur(8px);
+      border-radius: 48px;
+      padding: 2rem;
+      margin-top: 2rem;
+      border: 1px solid #ffefe3;
+    }
+
+    .btn-csr {
+      background: transparent;
+      border: 2px solid #d67a3f;
+      color: #b95f2e;
+      border-radius: 40px;
+      padding: 0.7rem 1.8rem;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .btn-csr:hover {
+      background: #d67a3f;
+      color: white;
+      border-color: #d67a3f;
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2rem;
+      }
+      .stats-wrapper {
+        border-radius: 32px;
+      }
+      .single-stat {
+        border-right: none;
+        border-bottom: 1px solid #f0dbce;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.8rem;
+      }
+      .single-stat:last-child {
+        border-bottom: none;
+      }
+      .work-img {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Premium Navbar -->
+<nav class="navbar navbar-expand-lg premium-nav fixed-top">
+  <div class="container-fluid px-4 px-lg-5">
+    <a class="navbar-brand logo-text" href="#"><img src="images/MeCeylon_LOGO-01-1-1024x542.jpg" class="brand-logo" style="color: #CB7B3C;"></img></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#premiumNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="premiumNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="homee.html" data-page="home">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="homee.html" data-page="products">Products</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="homee.html" data-page="about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="contact">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="blogs">Blogs</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signup">Signup</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signin">Signin</a></li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-premium" href="#" data-page="cart">
+            <i class="fas fa-shopping-bag"></i> Cart <span id="cartCountNav" class="cart-badge-premium">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<section class="csr-section" id="csr-impact">
+  <div class="container">
+    <!-- header -->
+    <div class="row text-center mb-4">
+      <div class="col-lg-8 mx-auto">
+        <span class="badge bg-warning-subtle text-dark px-3 py-2 rounded-pill mb-2" style="background:#fae4d6; color:#9b4b2e;"><i class="fas fa-seedling me-1"></i> ETHICAL SPICES · TANGIBLE CHANGE</span>
+        <h2 class="section-title mt-2">Caring Beyond the Harvest</h2>
+        <p class="subhead">At <strong>MeCeylon</strong>, we believe in enriching the lands and lives that give us flavor. From farmer livelihood programs to education for rural children — our social works speak louder than words.</p>
+      </div>
+    </div>
+
+    <!-- 3 Core CSR Pillars -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-6 col-lg-4">
+        <div class="csr-card">
+          <div class="icon-circle">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h3 class="card-title">Farmer First</h3>
+          <p class="text-secondary">Our brand supports farmers by ensuring  fair prices for their harvest, promoting sustainability farming practices, and providing knowledge to improve crop quality and productivity.</p>
+          <div class="mt-3">
+            <div class="stat-number">Rs.3000</div>
+            <div class="stat-label">distributed as fair bonus (2024)</div>
+          </div>
+          <a href="#" class="btn btn-csr mt-3 d-inline-flex align-items-center gap-2">Learn more <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="csr-card">
+          <div class="icon-circle">
+            <i class="fas fa-globe-asia"></i>
+          </div>
+          <h3 class="card-title">Planet Positive</h3>
+          <p class="text-secondary">Regenerative agriculture, solar-powered drying units, and plastic-neutral packaging. We’ve restored 340+ acres of degraded spice farmland.</p>
+          <div class="mt-3">
+            <div class="stat-number">-62%</div>
+            <div class="stat-label">carbon footprint vs industry avg.</div>
+          </div>
+          <a href="#" class="btn btn-csr mt-3 d-inline-flex align-items-center gap-2">Our impact <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="csr-card">
+          <div class="icon-circle">
+            <i class="fas fa-chalkboard-user"></i>
+          </div>
+          <h3 class="card-title">Education</h3>
+          <p class="text-secondary">Our brand is committed to supporting schools by contributing resources, improving learning environments, and creating better oppertunities for students.</p>
+          <div class="mt-3">
+            <div class="stat-number">1000+</div>
+            <div class="stat-label">children empowered with quality education</div>
+          </div>
+          <a href="#" class="btn btn-csr mt-3 d-inline-flex align-items-center gap-2">Sponsor a child <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEW SECTION: OUR SOCIAL WORKS (Gallery with real initiatives) -->
+    <div class="social-works-section">
+      <div class="social-header">
+        <h3><i class="fas fa-hands-helping me-2" style="color:#d67a3f;"></i> Our Social Works in Action</h3>
+        <p>Turning care into action for a better tomorrow.</p>
+      </div>
+      <div class="row g-4">
+        <!-- Work 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="work-card">
+            <div class="work-img" style="background-image: url('images/work1.jpg'); background-size: cover;">
+              <div class="work-overlay"><i class="fas fa-tint me-1"></i>Donation of Books and Sports Equipment </div>
+            </div>
+            <div class="work-content">
+              <div class="work-title">✨ School Project</div>
+              <p>Contributing to the betterment of society, we strive to make a positive impact that uplifts lives and fosters growth. Our commitment to giving back reflects the values that drive us forward.</p>
+              <div class="impact-stats"><i class="fas fa-water me-2"></i> Mo/Siridhammapala School,</div>
+            </div>
+          </div>
+        </div>
+        <!-- Work 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="work-card">
+            <div class="work-img" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&auto=format'); background-size: cover;">
+              <div class="work-overlay"><i class="fas fa-female me-1"></i> Women Spicepreneurs</div>
+            </div>
+            <div class="work-content">
+              <div class="work-title">🌸 Spice Sisters Cooperative</div>
+              <p>Launched a women-led turmeric & chili processing unit. 280+ rural women trained in value addition & business management.</p>
+              <div class="impact-stats"><i class="fas fa-chart-line me-2"></i> 3x average household income increase</div>
+            </div>
+          </div>
+        </div>
+        <!-- Work 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="work-card">
+            <div class="work-img" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500&auto=format'); background-size: cover;">
+              <div class="work-overlay"><i class="fas fa-graduation-cap me-1"></i> Education for All</div>
+            </div>
+            <div class="work-content">
+              <div class="work-title">📚 SpiceRoots Learning Hubs</div>
+              <p>5 digital libraries + 2 mobile science vans serving remote spice belt villages, with 100% girls' scholarship program.</p>
+              <div class="impact-stats"><i class="fas fa-star me-2"></i> 97% attendance increase in partner schools</div>
+            </div>
+          </div>
+        </div>
+       
+        
+
+    <!-- Key Stats Row with Counters (JS animated) -->
+    <div class="stats-wrapper">
+      <div class="row text-center">
+        <div class="col-md-3 col-6 single-stat">
+          <div class="stat-digit"><span class="counter" data-target="24680">0</span>+</div>
+          <div class="stat-label mt-1">Lives Impacted</div>
+        </div>
+        <div class="col-md-3 col-6 single-stat">
+          <div class="stat-digit"><span class="counter" data-target="18400">0</span>+</div>
+          <div class="stat-label mt-1">Tonnes CO₂ offset</div>
+        </div>
+        <div class="col-md-3 col-6 single-stat">
+          <div class="stat-digit"><span class="counter" data-target="315">0</span></div>
+          <div class="stat-label mt-1">Women-led co-ops</div>
+        </div>
+        <div class="col-md-3 col-6 single-stat">
+          <div class="stat-digit"><span class="counter" data-target="100">0</span>%</div>
+          <div class="stat-label mt-1">Traceable supply chain</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial Carousel (Real stories from social works beneficiaries) -->
+    <div class="testimonial-area mt-4">
+      <div class="d-flex align-items-center gap-2 mb-3">
+        <i class="fas fa-quote-left fa-2x" style="color: #d67a3f; opacity: 0.7;"></i>
+        <h5 class="mb-0 fw-semibold" style="color:#4f3829;">Real change, real voices</h5>
+      </div>
+      <div id="csrCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="testimonial-text">
+              “As a result of this gift, the students were able to put the cricket equipment to good use, as they participated in a friendly cricket match on 16th October 2024 between Vidyananda Pirivena and Siridhammapala School. ”
+            </div>
+            <div class="farmer-name">— Principal</div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial-text">
+              “I never imagined being a business owner. The Spice Sisters Cooperative taught me how to process turmeric into value-added powder. Now I supply to 3 cities and employ 12 women from my village.”
+            </div>
+            <div class="farmer-name">— Lakshmi P., Co-op Leader, Tamil Nadu</div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial-text">
+              “The mobile health camp discovered my father’s high blood pressure early. They also gave us nutrition kits. SpiceRoots treats us like family, not just suppliers.”
+            </div>
+            <div class="farmer-name">— Senthil K., Cardamom grower, Munnar</div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#csrCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#csrCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Progress commitment + CTA -->
+    <div class="row mt-5 align-items-center g-4">
+      <div class="col-lg-7">
+        <div class="bg-white p-4 rounded-4 shadow-sm border-0">
+          <h4 class="fw-bold" style="color: #9b4b2e;"><i class="fas fa-chart-simple me-2"></i> Our 2030 Commitment</h4>
+          <p class="mb-2">We aim to become carbon-neutral, impact 50,000+ families, and build 20 more community learning centers by 2030.</p>
+          <div class="progress mb-2" style="height: 10px; border-radius: 20px;">
+            <div class="progress-bar" style="width: 58%; background: #d67a3f;" role="progressbar" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <small>58% toward 2030 vision</small>
+            <small class="fw-semibold">+3,200 farmers onboard this year</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 text-lg-end text-center">
+        <a href="#" class="btn btn-csr btn-lg px-5 py-3" style="background: #d67a3f; color: white; border: none;">Join the change <i class="fas fa-long-arrow-alt-right ms-2"></i></a>
+        <p class="small text-muted mt-2">Partner with us for responsible sourcing & social impact</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  (function() {
+    // Counter animation using Intersection Observer
+    const counters = document.querySelectorAll('.counter');
+    const startCounter = (counterEl) => {
+      const target = parseInt(counterEl.getAttribute('data-target'));
+      if (isNaN(target)) return;
+      let current = 0;
+      const increment = target / 55;
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          counterEl.innerText = Math.floor(current);
+          requestAnimationFrame(updateCounter);
+        } else {
+          counterEl.innerText = target;
+        }
+      };
+      updateCounter();
+    };
+    
+    const statsWrapper = document.querySelector('.stats-wrapper');
+    let countersStarted = false;
+    if (statsWrapper) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !countersStarted) {
+            countersStarted = true;
+            counters.forEach(counter => startCounter(counter));
+            observer.unobserve(statsWrapper);
+          }
+        });
+      }, { threshold: 0.4 });
+      observer.observe(statsWrapper);
+    } else {
+      setTimeout(() => counters.forEach(counter => startCounter(counter)), 400);
+    }
+
+    // ensure progress bar animation on scroll
+    const progressBar = document.querySelector('.progress-bar');
+    if (progressBar) {
+      const progObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            progressBar.style.transition = 'width 1.2s ease-out';
+          }
+        });
+      }, { threshold: 0.3 });
+      progObserver.observe(progressBar);
+    }
+    
+    // small additional touch for counters visible on load
+    window.addEventListener('load', () => {
+      if (statsWrapper && isElementInViewport(statsWrapper, 0.4)) {
+        if (!countersStarted) {
+          countersStarted = true;
+          counters.forEach(counter => startCounter(counter));
+        }
+      }
+    });
+    
+    function isElementInViewport(el, threshold = 0.3) {
+      const rect = el.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      const visiblePart = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+      const elementHeight = rect.height;
+      if (elementHeight === 0) return false;
+      return (visiblePart / elementHeight) >= threshold;
+    }
+  })();
+</script>
+</body>
+</html>

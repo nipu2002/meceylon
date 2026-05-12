@@ -1,0 +1,1041 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MECEYLON Events - Spice Celebrations</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Inter', sans-serif;
+            background: #FFFFFF;
+            overflow-x: hidden;
+        }
+        
+
+
+        /* Custom Color Variables - Light Green Tomato & Golden Orange */
+        :root {
+            --light-green-tomato: #98D19B;     /* Soft light green */
+            --tomato-green: #7CB342;           /* Rich tomato green */
+            --golden-orange: #FFB347;          /* Warm golden orange */
+            --dark-orange: #FF8C42;             /* Deep orange */
+            --fresh-green: #66BB6A;             /* Fresh green accent */
+            --golden-yellow: #FFD966;           /* Soft golden yellow */
+            --light-cream: #FFF9F0;              /* Cream for accents */
+            --pure-white: #FFFFFF;
+            --soft-gray: #F5F5F5;
+            --text-dark: #2D3E2D;
+            --text-gray: #6B7B6B;
+            --shadow-color: rgba(125, 180, 66, 0.1);
+        }
+        
+
+
+
+/* Premium Navbar */
+    .premium-nav {
+      
+       background: rgb(235, 162, 36);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      transition: all 0.3s;
+    }
+    
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #63c46e 0%, #61a34f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+    .brand-logo{
+      max-height: 60px;
+      width:auto;
+      margin-right: 10px;
+    }
+    .nav-link-premium {
+      font-weight: 500;
+      color: #4A3729 !important;
+      margin: 0 0.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+    }
+    
+    .nav-link-premium:hover {
+      color: #CB7B3C !important;
+    }
+    
+    .nav-link-premium::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #CB7B3C, #E8B56A);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link-premium:hover::after {
+      width: 100%;
+    }
+    
+    .cart-badge-premium {
+      background: linear-gradient(135deg, #5cbb55, #3d8340);
+      color: white;
+      border-radius: 30px;
+      padding: 0 8px;
+      font-size: 0.7rem;
+      margin-left: 6px;
+      font-weight: 600;
+    }
+
+    /* ===== HOVER DROPDOWN STYLES ===== */
+        @media (min-width: 992px) {
+            /* Make dropdown appear on hover */
+            .dropdown:hover .dropdown-menu {
+                display: block;
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            /* Initially hide dropdown */
+            .dropdown .dropdown-menu {
+                display: block;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(10px);
+                transition: all 0.2s ease;
+                margin-top: 0;
+                border-radius: 8px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                border: none;
+            }
+            
+            /* Keep dropdown visible when hovering over it */
+            .dropdown-menu:hover {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            /* Rotate arrow on hover */
+            .dropdown:hover .dropdown-toggle::after {
+                transform: rotate(180deg);
+            }
+            
+            .dropdown-toggle::after {
+                transition: transform 0.2s;
+            }
+            
+            /* Style dropdown items */
+            .dropdown-item {
+                padding: 8px 20px;
+                transition: all 0.2s;
+            }
+            
+            .dropdown-item:hover {
+                background-color: #f8f9fa;
+                color: #CB7B3C;
+                padding-left: 25px;
+            }
+        }
+        
+        /* Mobile: Keep click functionality */
+        @media (max-width: 991px) {
+            .dropdown-menu {
+                border: none;
+                box-shadow: none;
+                background: #f8f9fa;
+                margin-left: 15px;
+            }
+        }
+    
+    
+
+        /* Header Section */
+        .events-header {
+            background: linear-gradient(135deg, var(--light-green-tomato) 0%, var(--tomato-green) 50%, var(--golden-orange) 100%);
+            padding: 100px 0 60px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 90px;
+        }
+        
+        .events-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255,255,255,0.1) 0px,
+                rgba(255,255,255,0.1) 2px,
+                transparent 2px,
+                transparent 8px
+            );
+            animation: slide 20s linear infinite;
+        }
+        
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .page-title {
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .page-subtitle {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.2rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Tab Navigation */
+        .event-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: -30px auto 50px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .tab-btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: white;
+            color: var(--text-dark);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--tomato-green), var(--golden-orange));
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(124, 179, 66, 0.3);
+            border-color: var(--golden-orange);
+        }
+        
+        .tab-btn:hover:not(.active) {
+            transform: translateY(-3px);
+            background: var(--golden-yellow);
+            color: var(--text-dark);
+        }
+        
+        /* Event Cards */
+        .event-card {
+            background: var(--pure-white);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            border: 1px solid rgba(125, 180, 66, 0.15);
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(124, 179, 66, 0.2);
+            border-color: var(--golden-orange);
+        }
+        
+        .event-date-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, var(--tomato-green), var(--golden-orange));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-align: center;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .event-date-badge .day {
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        
+        .event-date-badge .month {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        
+        .event-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .event-card:hover .event-image img {
+            transform: scale(1.1);
+        }
+        
+        .event-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(124, 179, 66, 0.9), rgba(255, 179, 71, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .event-card:hover .event-overlay {
+            opacity: 1;
+        }
+        
+        .event-content {
+            padding: 25px;
+        }
+        
+        .event-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        
+        .event-location, .event-time {
+            color: var(--tomato-green);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .event-location i, .event-time i {
+            margin-right: 8px;
+            color: var(--golden-orange);
+        }
+        
+        .event-description {
+            color: var(--text-gray);
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+        
+        .event-btn {
+            background: linear-gradient(90deg, var(--tomato-green), var(--golden-orange));
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .event-btn:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(124, 179, 66, 0.4);
+            background: linear-gradient(90deg, var(--golden-orange), var(--tomato-green));
+        }
+        
+        /* Past Events Style */
+        .past-event-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(125, 180, 66, 0.15);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+        
+        .past-event-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(124, 179, 66, 0.15);
+            border-left: 4px solid var(--golden-orange);
+        }
+        
+        .past-event-date {
+            background: linear-gradient(135deg, var(--golden-yellow), var(--golden-orange));
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 0.85rem;
+        }
+        
+        /* Countdown Timer */
+        .countdown-timer {
+            background: linear-gradient(135deg, var(--light-green-tomato), var(--fresh-green));
+            padding: 10px 15px;
+            border-radius: 50px;
+            text-align: center;
+            margin-top: 15px;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .countdown-timer i {
+            margin-right: 8px;
+        }
+        
+        /* Category Badge */
+        .category-badge {
+            background: var(--golden-yellow);
+            color: var(--text-dark);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+
+/* Footer Premium */
+    .footer-premium {
+      background: #1C140F;
+      color: #DCC9B5;
+      padding: 4rem 0 2rem;
+      border-top: 1px solid rgba(232, 181, 106, 0.2);
+    }
+    
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: rgba(220, 201, 181, 0.1);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      color: #DCC9B5;
+      margin-right: 0.8rem;
+    }
+    
+    .social-icon:hover {
+      background: #CB7B3C;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--light-green-tomato) 0%, var(--golden-orange) 100%);
+            padding: 80px 0;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .newsletter-section::before {
+            content: '🌿';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.1;
+            bottom: -50px;
+            right: -50px;
+            transform: rotate(-15deg);
+        }
+        
+        .newsletter-section::after {
+            content: '🍅';
+            position: absolute;
+            font-size: 180px;
+            opacity: 0.1;
+            top: -50px;
+            left: -50px;
+            transform: rotate(15deg);
+        }
+        
+        .newsletter-input {
+            border-radius: 50px;
+            padding: 15px 25px;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .newsletter-btn {
+            border-radius: 50px;
+            padding: 15px 35px;
+            background: var(--tomato-green);
+            color: white;
+            font-weight: 700;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-btn:hover {
+            transform: scale(1.05);
+            background: var(--golden-orange);
+            color: white;
+        }
+        
+        /* Decorative Elements */
+        .green-dot {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--light-green-tomato) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .green-dot-1 {
+            top: 20%;
+            left: -100px;
+        }
+        
+        .green-dot-2 {
+            bottom: 10%;
+            right: -100px;
+        }
+        
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            .event-title {
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--soft-gray);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--tomato-green), var(--golden-orange));
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+    
+<!-- Premium Navbar -->
+<nav class="navbar navbar-expand-lg premium-nav fixed-top">
+  <div class="container-fluid px-4 px-lg-5">
+    <a class="navbar-brand logo-text" href="#"><img src="images/MeCeylon_LOGO-01-1-1024x542.jpg" class="brand-logo" style="color: #CB7B3C;"></img></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#premiumNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="premiumNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="homee.html" data-page="home">Home</a></li>
+        <!-- Products Dropdown - Properly Structured -->
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-link-premium dropdown-toggle" href="#" id="productsDropdownLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-page="products">
+            Products
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="productsDropdownLink">
+            <li><a class="dropdown-item" href="#">Products Range</a></li>
+            <li><a class="dropdown-item" href="#">Buy Now</a></li>
+            <!--<li><a class="dropdown-item" href="#"></a></li>
+            <li><a class="dropdown-item" href="#"></a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">All Products</a></li>--->
+          </ul>
+        </li>
+        <li class="nav-item"><a  class="nav-link nav-link-premium" href="aboutus.html" >About Us</a></li>
+        <li class="nav-item"><a   class="nav-link nav-link-premium" href="contact.html" >Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="blogs">Blogs</a></li>
+        <!--<li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signup">Signup</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signin">Signin</a></li>--->
+        <li class="nav-item">
+          <a class="nav-link nav-link-premium" href="#" data-page="cart">
+            <i class="fas fa-shopping-bag"></i> Cart <span id="cartCountNav" class="cart-badge-premium">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Decorative Background Elements -->
+<div class="green-dot green-dot-1"></div>
+<div class="green-dot green-dot-2"></div>
+
+<!-- Events Header -->
+<section class="events-header text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <i class="fas fa-calendar-alt fa-4x mb-4" style="color: var(--golden-yellow);"></i>
+                <h1 class="page-title">🌿 Spice Events & Celebrations 🍅</h1>
+                <p class="page-subtitle">Join us on a flavorful journey through our exciting events</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tab Navigation -->
+<div class="container">
+    <div class="event-tabs">
+        <button class="tab-btn active" id="upcomingTab">
+            <i class="fas fa-clock me-2"></i> Upcoming Events
+        </button>
+        <button class="tab-btn" id="pastTab">
+            <i class="fas fa-history me-2"></i> Past Events
+        </button>
+    </div>
+</div>
+
+<!-- Events Container -->
+<div class="container mb-5">
+    <!-- Upcoming Events -->
+    <div id="upcomingEvents" class="events-container">
+        <div class="row" id="upcomingEventsRow"></div>
+    </div>
+    
+    <!-- Past Events -->
+    <div id="pastEvents" class="events-container" style="display: none;">
+        <div class="row" id="pastEventsRow"></div>
+    </div>
+</div>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <i class="fas fa-envelope-open-text fa-3x mb-3" style="color: white;"></i>
+                <h2 class="text-white mb-3">Never Miss an Event!</h2>
+                <p class="text-white mb-4">Subscribe to get notified about our upcoming spice festivals and workshops</p>
+                <div class="input-group">
+                    <input type="email" class="form-control newsletter-input" placeholder="Enter your email address">
+                    <button class="btn newsletter-btn ms-2">Subscribe Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- PREMIUM FOOTER -->
+<footer class="footer-premium mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h4 class="fw-bold mb-3"><i class="fas fa-seedling me-2"></i>MeCeylon</h4>
+        <p>Exporting the finest spices with integrity, sustainability, and passion since 2018.</p>
+        <div class="mt-3">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h6 class="fw-bold mb-3">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="eventpage.html" style="color: #DCC9B5; text-decoration: none;">Event Calendar</a></li>
+          <li class="mb-2"><a href="csr.html" style="color: #DCC9B5; text-decoration: none;">CSR & Sustainability
+          </a></li>
+          <li class="mb-2"><a href="certificate.html" style="color: #DCC9B5; text-decoration: none;">Certifications</a></li>
+          <li class="mb-2"><a href="harvest.html" style="color: #DCC9B5; text-decoration: none;">Harvesting seasons</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold mb-3">Contact Info</h6>
+        <p><i class="fas fa-map-marker-alt me-2"></i> Colombo, Sri Lanka</p>
+        <p><i class="fas fa-phone-alt me-2"></i> +94 112 345 678</p>
+        <p><i class="fas fa-envelope me-2"></i> export@meceylon.com</p>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold mb-3">Newsletter</h6>
+        <p>Get spice updates & offers</p>
+        <div class="input-group">
+          <input type="email" id="footerEmail" class="form-control form-control-sm" placeholder="Email">
+          <button class="btn btn-sm btn-premium" id="footerSubs">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <hr class="mt-4" style="background: rgba(220,201,181,0.2);">
+    <div class="text-center small">© 2025 MeCeylon – Premium Spice Exporter. All Rights Reserved.</div>
+  </div>
+</footer>
+
+
+<script>
+    // Events Data
+    const upcomingEvents = [
+        {
+            id: 1,
+            title: "🍅 Organic Tomato & Spice Festival",
+            date: "May 15, 2025",
+            day: "15",
+            month: "MAY",
+            time: "10:00 AM - 8:00 PM",
+            location: "Colombo Convention Center, Sri Lanka",
+            description: "Celebrate the perfect blend of fresh organic tomatoes and exotic spices! Cooking demos, tastings, and farm tours.",
+            image: "https://images.unsplash.com/photo-1592924357229-91c4c6ba8e87?w=400&h=250&fit=crop",
+            category: "Festival",
+            price: "Free Entry"
+        },
+        {
+            id: 2,
+            title: "🌿 Green Spice Blending Workshop",
+            date: "June 5, 2025",
+            day: "05",
+            month: "JUN",
+            time: "2:00 PM - 6:00 PM",
+            location: "MECEYLON Culinary Studio",
+            description: "Master the art of creating signature spice blends using fresh green herbs and golden spices.",
+            image: "https://images.unsplash.com/photo-1556910104-525a2e691b12?w=400&h=250&fit=crop",
+            category: "Workshop",
+            price: "$49.99"
+        },
+        {
+            id: 3,
+            title: "🍅 Tomato Harvest & Spice Tour",
+            date: "July 20, 2025",
+            day: "20",
+            month: "JUL",
+            time: "8:00 AM - 12:00 PM",
+            location: "Organic Tomato Farms, Kandy",
+            description: "Experience the joy of harvesting fresh tomatoes and learning about companion spices grown together.",
+            image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=400&h=250&fit=crop",
+            category: "Tour",
+            price: "$29.99"
+        },
+        {
+            id: 4,
+            title: "🎨 Golden Spice Art Exhibition",
+            date: "August 10, 2025",
+            day: "10",
+            month: "AUG",
+            time: "11:00 AM - 7:00 PM",
+            location: "National Art Gallery",
+            description: "Beautiful art created using golden turmeric, paprika, and other natural spice pigments.",
+            image: "https://images.unsplash.com/photo-1545987796-200677ee1011?w=400&h=250&fit=crop",
+            category: "Exhibition",
+            price: "$15.00"
+        }
+    ];
+    
+    const pastEvents = [
+        {
+            id: 5,
+            title: "✨ Golden Spice Gala Night 2024",
+            date: "December 15, 2024",
+            time: "7:00 PM - 12:00 AM",
+            location: "Grand Ballroom, Colombo",
+            description: "A glamorous night celebrating Sri Lankan golden spices with gourmet dinner and entertainment.",
+            image: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=400&h=250&fit=crop",
+            attendees: "500+ Guests",
+            rating: 4.9
+        },
+        {
+            id: 6,
+            title: "🍵 Green Tea & Spice Pairing",
+            date: "November 10, 2024",
+            time: "3:00 PM - 5:00 PM",
+            location: "Tea Lounge, Nuwara Eliya",
+            description: "Perfect pairing of fresh green tea with aromatic spices.",
+            image: "https://images.unsplash.com/photo-1544787219-7f47bdc3a782?w=400&h=250&fit=crop",
+            attendees: "150+ Guests",
+            rating: 4.8
+        },
+        {
+            id: 7,
+            title: "🌍 Tomato & Spice World Conference",
+            date: "October 5-7, 2024",
+            time: "9:00 AM - 6:00 PM",
+            location: "International Conference Hall",
+            description: "Global experts discussing tomato cultivation and spice integration.",
+            image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=400&h=250&fit=crop",
+            attendees: "1000+ Delegates",
+            rating: 4.9
+        },
+        {
+            id: 8,
+            title: "🎄 Golden Christmas Spice Market",
+            date: "December 20-22, 2024",
+            time: "10:00 AM - 9:00 PM",
+            location: "City Center, Colombo",
+            description: "Holiday special spice market with golden gifts, treats, and festive cheer.",
+            image: "https://images.unsplash.com/photo-1482517967863-00e15c9b44be?w=400&h=250&fit=crop",
+            attendees: "2000+ Visitors",
+            rating: 4.7
+        }
+    ];
+    
+    // Function to render upcoming events
+    function renderUpcomingEvents() {
+        const container = document.getElementById('upcomingEventsRow');
+        if (!container) return;
+        
+        container.innerHTML = upcomingEvents.map(event => `
+            <div class="col-lg-6" data-aos="fade-up" data-aos-duration="600">
+                <div class="event-card">
+                    <div class="event-date-badge">
+                        <div class="day">${event.day}</div>
+                        <div class="month">${event.month}</div>
+                    </div>
+                    <div class="event-image">
+                        <img src="${event.image}" alt="${event.title}">
+                        <div class="event-overlay">
+                            <button class="btn event-btn" onclick="registerEvent(${event.id})">
+                                <i class="fas fa-ticket-alt"></i> Register Now
+                            </button>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h3 class="event-title">${event.title}</h3>
+                            <span class="category-badge">${event.category}</span>
+                        </div>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i> ${event.location}
+                        </div>
+                        <div class="event-time">
+                            <i class="fas fa-clock"></i> ${event.time}
+                        </div>
+                        <p class="event-description">${event.description}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold" style="color: var(--tomato-green); font-size: 1.2rem;">${event.price}</span>
+                            <button class="btn event-btn" onclick="registerEvent(${event.id})">
+                                Register <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                        <div class="countdown-timer mt-3" id="countdown-${event.id}">
+                            <i class="fas fa-hourglass-half"></i>
+                            <span>Calculating...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        
+        // Start countdown timers
+        upcomingEvents.forEach(event => {
+            startCountdown(event.id, event.date);
+        });
+    }
+    
+    // Function to render past events
+    function renderPastEvents() {
+        const container = document.getElementById('pastEventsRow');
+        if (!container) return;
+        
+        container.innerHTML = pastEvents.map(event => `
+            <div class="col-md-6" data-aos="fade-up" data-aos-duration="600">
+                <div class="past-event-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <img src="${event.image}" class="img-fluid rounded" style="height: 150px; width: 100%; object-fit: cover;" alt="${event.title}">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="past-event-date mb-2">
+                                <i class="fas fa-calendar-check me-1"></i> ${event.date}
+                            </div>
+                            <h4 class="mt-2" style="color: var(--tomato-green);">${event.title}</h4>
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i> ${event.location}
+                            </div>
+                            <div class="event-time">
+                                <i class="fas fa-clock"></i> ${event.time}
+                            </div>
+                            <p class="mt-2 text-muted small">${event.description}</p>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <div>
+                                    <i class="fas fa-users" style="color: var(--golden-orange);"></i>
+                                    <span class="ms-1">${event.attendees}</span>
+                                    <i class="fas fa-star text-warning ms-3"></i>
+                                    <span class="ms-1">${event.rating}</span>
+                                </div>
+                                <button class="btn btn-sm" style="background: var(--light-green-tomato); color: var(--text-dark);" onclick="viewGallery(${event.id})">
+                                    View Gallery <i class="fas fa-images ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    // Countdown Timer Function
+    function startCountdown(eventId, eventDate) {
+        const targetDate = new Date(eventDate + ", 2025");
+        
+        function updateCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
+            
+            if (diff <= 0) {
+                document.getElementById(`countdown-${eventId}`).innerHTML = '<i class="fas fa-check-circle"></i> Event Started! 🎉';
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (86400000)) / 3600000);
+            const minutes = Math.floor((diff % 3600000) / 60000);
+            
+            const countdownElement = document.getElementById(`countdown-${eventId}`);
+            if (countdownElement) {
+                countdownElement.innerHTML = `
+                    <i class="fas fa-hourglass-half"></i>
+                    <span>${days}d ${hours}h ${minutes}m remaining</span>
+                `;
+            }
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+    }
+    
+    // Register Event Function
+    function registerEvent(eventId) {
+        const event = upcomingEvents.find(e => e.id === eventId);
+        if (event) {
+            alert(`🎉 Yay! You've registered for "${event.title}"!\n\n✨ We've sent a confirmation to your email.\n🍅 Get ready for an amazing spice experience!`);
+        }
+    }
+    
+    // View Gallery Function
+    function viewGallery(eventId) {
+        alert("📸 Our spice gallery is being prepared! Check back soon for beautiful memories from this golden event.");
+    }
+    
+    // Tab Switching Logic
+    document.getElementById('upcomingTab').addEventListener('click', function() {
+        document.getElementById('upcomingEvents').style.display = 'block';
+        document.getElementById('pastEvents').style.display = 'none';
+        document.getElementById('upcomingTab').classList.add('active');
+        document.getElementById('pastTab').classList.remove('active');
+    });
+    
+    document.getElementById('pastTab').addEventListener('click', function() {
+        document.getElementById('upcomingEvents').style.display = 'none';
+        document.getElementById('pastEvents').style.display = 'block';
+        document.getElementById('pastTab').classList.add('active');
+        document.getElementById('upcomingTab').classList.remove('active');
+    });
+    
+    // Newsletter Subscription
+    document.querySelector('.newsletter-btn').addEventListener('click', function() {
+        const email = document.querySelector('.newsletter-input').value;
+        if (email && email.includes('@')) {
+            alert(`✅ Subscribed successfully! 🌿\nWe'll send spice event updates to ${email}\n🍅 Thank you for joining!`);
+            document.querySelector('.newsletter-input').value = '';
+        } else {
+            alert('🍅 Please enter a valid email address to receive event updates!');
+        }
+    });
+    
+    // Enter key for newsletter
+    document.querySelector('.newsletter-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            document.querySelector('.newsletter-btn').click();
+        }
+    });
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+        renderUpcomingEvents();
+        renderPastEvents();
+    });
+</script>
+
+<!-- AOS Animation Library -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        once: true,
+        offset: 100,
+        duration: 800
+    });
+</script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

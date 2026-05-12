@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harvesting Seasons - MECEYLON Spices</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: #F8F9FA;
+        }
+
+
+        
+/* Premium Navbar */
+    .premium-nav {
+      
+       background: rgb(235, 162, 36);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      transition: all 0.3s;
+    }
+    
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #63c46e 0%, #61a34f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+    .brand-logo{
+      max-height: 60px;
+      width:auto;
+      margin-right: 10px;
+    }
+    .nav-link-premium {
+      font-weight: 500;
+      color: #4A3729 !important;
+      margin: 0 0.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+    }
+    
+    .nav-link-premium:hover {
+      color: #CB7B3C !important;
+    }
+    
+    .nav-link-premium::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #CB7B3C, #E8B56A);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link-premium:hover::after {
+      width: 100%;
+    }
+    
+    .cart-badge-premium {
+      background: linear-gradient(135deg, #5cbb55, #3d8340);
+      color: white;
+      border-radius: 30px;
+      padding: 0 8px;
+      font-size: 0.7rem;
+      margin-left: 6px;
+      font-weight: 600;
+    }
+
+    /* ===== HOVER DROPDOWN STYLES ===== */
+        @media (min-width: 992px) {
+            /* Make dropdown appear on hover */
+            .dropdown:hover .dropdown-menu {
+                display: block;
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            /* Initially hide dropdown */
+            .dropdown .dropdown-menu {
+                display: block;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(10px);
+                transition: all 0.2s ease;
+                margin-top: 0;
+                border-radius: 8px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                border: none;
+            }
+            
+            /* Keep dropdown visible when hovering over it */
+            .dropdown-menu:hover {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            /* Rotate arrow on hover */
+            .dropdown:hover .dropdown-toggle::after {
+                transform: rotate(180deg);
+            }
+            
+            .dropdown-toggle::after {
+                transition: transform 0.2s;
+            }
+            
+            /* Style dropdown items */
+            .dropdown-item {
+                padding: 8px 20px;
+                transition: all 0.2s;
+            }
+            
+            .dropdown-item:hover {
+                background-color: #f8f9fa;
+                color: #CB7B3C;
+                padding-left: 25px;
+            }
+        }
+        
+        /* Mobile: Keep click functionality */
+        @media (max-width: 991px) {
+            .dropdown-menu {
+                border: none;
+                box-shadow: none;
+                background: #f8f9fa;
+                margin-left: 15px;
+            }
+        }
+    
+    
+        
+        /* Header Section */
+        .harvest-header {
+            background: linear-gradient(135deg, #2D6A4F 0%, #52B788 50%, #D4A373 100%);
+            padding: 60px 0;
+            text-align: center;
+            color: white;
+            margin-top: 90px;
+        }
+        
+        .harvest-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        
+        .harvest-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        
+        /* Season Card */
+        .season-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+        
+        .season-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .season-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #D4A373;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .season-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2D6A4F;
+            margin-bottom: 10px;
+        }
+        
+        .harvest-month {
+            background: #E9ECEF;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2D6A4F;
+        }
+        
+        .progress-bar-custom {
+            height: 8px;
+            background: #E9ECEF;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-fill.cinnamon { background: linear-gradient(90deg, #8B5A2B, #D4A373); width: 0%; }
+        .progress-fill.mace { background: linear-gradient(90deg, #E76F51, #F4A261); width: 0%; }
+        .progress-fill.pepper { background: linear-gradient(90deg, #2D6A4F, #52B788); width: 0%; }
+        .progress-fill.chilli { background: linear-gradient(90deg, #E63946, #FF6B6B); width: 0%; }
+        
+        .status-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        
+        .status-harvesting { color: #2D6A4F; }
+        .status-upcoming { color: #E76F51; }
+        .status-off { color: #6C757D; }
+        
+        .location-tag {
+            background: #F8F9FA;
+            padding: 8px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-size: 0.8rem;
+        }
+        
+        .location-tag i {
+            color: #D4A373;
+            margin-right: 5px;
+        }
+        
+        /* Map Container */
+        .map-container {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        #srilankaMap {
+            height: 450px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .map-legend {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+        
+        .legend-item {
+            display: inline-block;
+            margin-right: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        
+        /* Calendar Section */
+        .calendar-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .calendar-table td, .calendar-table th {
+            text-align: center;
+            vertical-align: middle;
+            padding: 8px;
+        }
+        
+        .spice-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+        
+        .indicator-cinnamon { background: #8B5A2B; }
+        .indicator-mace { background: #E76F51; }
+        .indicator-pepper { background: #2D6A4F; }
+        .indicator-chilli { background: #E63946; }
+        
+        /* Footer */
+        .footer {
+            background: #2D6A4F;
+            color: white;
+            padding: 30px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .harvest-title {
+                font-size: 2rem;
+            }
+            .season-title {
+                font-size: 1.2rem;
+            }
+            #srilankaMap {
+                height: 350px;
+            }
+        }
+
+
+        /* Footer Premium */
+    .footer-premium {
+      background: #1C140F;
+      color: #DCC9B5;
+      padding: 4rem 0 2rem;
+      border-top: 1px solid rgba(232, 181, 106, 0.2);
+    }
+    
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: rgba(220, 201, 181, 0.1);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      color: #DCC9B5;
+      margin-right: 0.8rem;
+    }
+    
+    .social-icon:hover {
+      background: #CB7B3C;
+      color: white;
+      transform: translateY(-3px);
+    }
+    </style>
+</head>
+<body>
+
+    
+<!-- Premium Navbar -->
+<nav class="navbar navbar-expand-lg premium-nav fixed-top">
+  <div class="container-fluid px-4 px-lg-5">
+    <a class="navbar-brand logo-text" href="#"><img src="images/MeCeylon_LOGO-01-1-1024x542.jpg" class="brand-logo" style="color: #CB7B3C;"></img></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#premiumNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="premiumNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="homee.html" data-page="home">Home</a></li>
+        <!-- Products Dropdown - Properly Structured -->
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-link-premium dropdown-toggle" href="#" id="productsDropdownLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-page="products">
+            Products
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="productsDropdownLink">
+            <li><a class="dropdown-item" href="#">Products Range</a></li>
+            <li><a class="dropdown-item" href="#">Buy Now</a></li>
+            <!--<li><a class="dropdown-item" href="#"></a></li>
+            <li><a class="dropdown-item" href="#"></a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">All Products</a></li>--->
+          </ul>
+        </li>
+        <li class="nav-item"><a  class="nav-link nav-link-premium" href="aboutus.html" >About Us</a></li>
+        <li class="nav-item"><a   class="nav-link nav-link-premium" href="contact.html" >Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="blogs">Blogs</a></li>
+        <!--<li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signup">Signup</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signin">Signin</a></li>--->
+        <li class="nav-item">
+          <a class="nav-link nav-link-premium" href="#" data-page="cart">
+            <i class="fas fa-shopping-bag"></i> Cart <span id="cartCountNav" class="cart-badge-premium">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Header -->
+<section class="harvest-header">
+    <div class="container">
+        <i class="fas fa-map-marked-alt fa-3x mb-3" style="color: #D4A373;"></i>
+        <h1 class="harvest-title">🌾 Harvesting Seasons of Sri Lanka</h1>
+        <p class="harvest-subtitle">Discover where our finest spices are grown and harvested</p>
+    </div>
+</section>
+
+<!-- Main Content -->
+<div class="container my-5">
+    <div class="row g-4">
+        
+        <!-- Pepper Card -->
+        <div class="col-md-6 col-lg-3">
+            <div class="season-card">
+                <div class="position-relative">
+                    <img src="https://images.unsplash.com/photo-1588255821870-5b1f7a5b5b7d?w=400&h=220&fit=crop" class="card-img-top" alt="Cinnamon">
+                    <div class="season-badge">Premium Spice</div>
+                </div>
+                <div class="p-3">
+                    <h3 class="season-title"> Pepper</h3>
+                    <div class="mb-2">
+                        <span class="harvest-month"><i class="far fa-calendar-alt me-1"></i> May - August</span>
+                    </div>
+                    <div class="progress-bar-custom">
+                        <div class="progress-fill cinnamon" id="cinnamonProgress"></div>
+                    </div>
+                    <div class="status-text" id="cinnamonStatus">Checking season...</div>
+                    <div class="location-tag">
+                        <i class="fas fa-map-marker-alt"></i> <strong>Harvest Locations:</strong><br>
+                        📍 Negombo, Kalutara, Matara, Galle
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cinnamon Card -->
+        <div class="col-md-6 col-lg-3">
+            <div class="season-card">
+                <div class="position-relative">
+                    <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&h=220&fit=crop" class="card-img-top" alt="Mace">
+                    <div class="season-badge">Premium Spice</div>
+                </div>
+                <div class="p-3">
+                    <h3 class="season-title"> Cinnamon</h3>
+                    <div class="mb-2">
+                        <span class="harvest-month"><i class="far fa-calendar-alt me-1"></i> June - October</span>
+                    </div>
+                    <div class="progress-bar-custom">
+                        <div class="progress-fill mace" id="maceProgress"></div>
+                    </div>
+                    <div class="status-text" id="maceStatus">Checking season...</div>
+                    <div class="location-tag">
+                        <i class="fas fa-map-marker-alt"></i> <strong>Harvest Locations:</strong><br>
+                        📍 Kandy, Matale, Kegalle, Gampola
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Nutmeg Card -->
+        <div class="col-md-6 col-lg-3">
+            <div class="season-card">
+                <div class="position-relative">
+                    <img src="https://images.unsplash.com/photo-1589136858732-8b1140efc6fd?w=400&h=220&fit=crop" class="card-img-top" alt="Black Pepper">
+                    <div class="season-badge">Premium Spice</div>
+                </div>
+                <div class="p-3">
+                    <h3 class="season-title"> Nutmeg</h3>
+                    <div class="mb-2">
+                        <span class="harvest-month"><i class="far fa-calendar-alt me-1"></i> December - March</span>
+                    </div>
+                    <div class="progress-bar-custom">
+                        <div class="progress-fill pepper" id="pepperProgress"></div>
+                    </div>
+                    <div class="status-text" id="pepperStatus">Checking season...</div>
+                    <div class="location-tag">
+                        <i class="fas fa-map-marker-alt"></i> <strong>Harvest Locations:</strong><br>
+                        📍 Matale, Kandy, Rathnapura, Kurunegala
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mace Card -->
+        <div class="col-md-6 col-lg-3">
+            <div class="season-card">
+                <div class="position-relative">
+                    <img src="https://images.unsplash.com/photo-1582823463483-a5f7bb3dfa52?w=400&h=220&fit=crop" class="card-img-top" alt="Chilli">
+                    <div class="season-badge">Premium Spice</div>
+                </div>
+                <div class="p-3">
+                    <h3 class="season-title">Mace</h3>
+                    <div class="mb-2">
+                        <span class="harvest-month"><i class="far fa-calendar-alt me-1"></i> July - November</span>
+                    </div>
+                    <div class="progress-bar-custom">
+                        <div class="progress-fill chilli" id="chilliProgress"></div>
+                    </div>
+                    <div class="status-text" id="chilliStatus">Checking season...</div>
+                    <div class="location-tag">
+                        <i class="fas fa-map-marker-alt"></i> <strong>Harvest Locations:</strong><br>
+                        📍 Dambulla, Kurunegala, Anuradhapura, Hambantota
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cloves Card -->
+        <div class="col-md-6 col-lg-3">
+            <div class="season-card">
+                <div class="position-relative">
+                    <img src="https://images.unsplash.com/photo-1582823463483-a5f7bb3dfa52?w=400&h=220&fit=crop" class="card-img-top" alt="Chilli">
+                    <div class="season-badge">Premium Spice</div>
+                </div>
+                <div class="p-3">
+                    <h3 class="season-title">Cloves</h3>
+                    <div class="mb-2">
+                        <span class="harvest-month"><i class="far fa-calendar-alt me-1"></i> July - November</span>
+                    </div>
+                    <div class="progress-bar-custom">
+                        <div class="progress-fill chilli" id="chilliProgress"></div>
+                    </div>
+                    <div class="status-text" id="chilliStatus">Checking season...</div>
+                    <div class="location-tag">
+                        <i class="fas fa-map-marker-alt"></i> <strong>Harvest Locations:</strong><br>
+                        📍 Dambulla, Kurunegala, Anuradhapura, Hambantota
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Sri Lanka Map Section -->
+    <div class="map-container">
+        <h3 class="text-center mb-4" style="color: #2D6A4F;">
+            <i class="fas fa-map-marked-alt me-2" style="color: #D4A373;"></i>
+            Spice Harvesting Regions of Sri Lanka
+        </h3>
+        <div id="srilankaMap"></div>
+        <div class="map-legend text-center">
+            <span class="legend-item"><span class="legend-color" style="background: #8B5A2B;"></span> Pepper</span>
+            <span class="legend-item"><span class="legend-color" style="background: #E76F51;"></span> Cinnamon</span>
+            <span class="legend-item"><span class="legend-color" style="background: #2D6A4F;"></span> Nutmeg</span>
+            <span class="legend-item"><span class="legend-color" style="background: #E63946;"></span> Mace </span>
+            <span class="legend-item"><span class="legend-color" style="background: #E63946;"></span> Cloves </span>
+            <span class="legend-item"><span class="legend-color" style="background: #E63946;"></span> Vanilla </span>
+            <span class="legend-item"><span class="legend-color" style="background: #D4A373;"></span> Main Cities</span>
+        </div>
+    </div>
+    
+    <!-- Calendar Section -->
+    <div class="calendar-section">
+        <h3 class="text-center mb-4" style="color: #2D6A4F;">
+            <i class="fas fa-calendar-alt me-2" style="color: #D4A373;"></i>
+            Harvest Season Calendar
+        </h3>
+        
+        <div class="table-responsive">
+            <table class="table table-bordered calendar-table">
+                <thead style="background: #2D6A4F; color: white;">
+                    <tr>
+                        <th>Spice</th>
+                        <th>Jan</th>
+                        <th>Feb</th>
+                        <th>Mar</th>
+                        <th>Apr</th>
+                        <th>May</th>
+                        <th>Jun</th>
+                        <th>Jul</th>
+                        <th>Aug</th>
+                        <th>Sep</th>
+                        <th>Oct</th>
+                        <th>Nov</th>
+                        <th>Dec</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong> Pepper</strong></td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cinnamon</strong></td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nutmeg</strong></td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mace</strong></td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="text-muted">◯</td>
+                    </tr>
+                    <tr>
+                        <td><strong> Cloves</strong></td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                    </tr>
+                    <tr>
+                        <td><strong> Vanilla</strong></td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="bg-success bg-opacity-25 text-success">●</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                        <td class="text-muted">◯</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="text-center mt-3">
+            <small class="text-muted">
+                <span class="spice-indicator indicator-cinnamon"></span> Pepper &nbsp;&nbsp;
+                <span class="spice-indicator indicator-mace"></span> Cinnamon &nbsp;&nbsp;
+                <span class="spice-indicator indicator-pepper"></span> Nutmeg &nbsp;&nbsp;
+                <span class="spice-indicator indicator-pepper"></span> Mace &nbsp;&nbsp;
+                <span class="spice-indicator indicator-pepper"></span> Cloves &nbsp;&nbsp;
+                <span class="spice-indicator indicator-chilli"></span> Vanilla
+            </small>
+            <br>
+            <small>● = Peak Harvest Season | ◯ = Off Season</small>
+        </div>
+    </div>
+    
+    <!-- Fun Fact Section -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="alert" style="background: #E9ECEF; border-left: 4px solid #D4A373;">
+                <i class="fas fa-lightbulb me-2" style="color: #D4A373;"></i>
+                <strong>Did You Know?</strong> Sri Lanka produces 80-90% of the world's true cinnamon (Cinnamomum verum), known as "Ceylon Cinnamon"!
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PREMIUM FOOTER -->
+<footer class="footer-premium mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h4 class="fw-bold mb-3"><i class="fas fa-seedling me-2"></i>MeCeylon</h4>
+        <p>Exporting the finest spices with integrity, sustainability, and passion since 2018.</p>
+        <div class="mt-3">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h6 class="fw-bold mb-3">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="eventpage.html" style="color: #DCC9B5; text-decoration: none;">Event Calendar</a></li>
+          <li class="mb-2"><a href="csr.html" style="color: #DCC9B5; text-decoration: none;">CSR & Sustainability
+          </a></li>
+          <li class="mb-2"><a href="certificate.html" style="color: #DCC9B5; text-decoration: none;">Certifications</a></li>
+          <li class="mb-2"><a href="harvest.html" style="color: #DCC9B5; text-decoration: none;">Harvesting seasons</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold mb-3">Contact Info</h6>
+        <p><i class="fas fa-map-marker-alt me-2"></i> Colombo, Sri Lanka</p>
+        <p><i class="fas fa-phone-alt me-2"></i> +94 112 345 678</p>
+        <p><i class="fas fa-envelope me-2"></i> export@meceylon.com</p>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold mb-3">Newsletter</h6>
+        <p>Get spice updates & offers</p>
+        <div class="input-group">
+          <input type="email" id="footerEmail" class="form-control form-control-sm" placeholder="Email">
+          <button class="btn btn-sm btn-premium" id="footerSubs">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <hr class="mt-4" style="background: rgba(220,201,181,0.2);">
+    <div class="text-center small">© 2025 MeCeylon – Premium Spice Exporter. All Rights Reserved.</div>
+  </div>
+</footer>
+
+
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+    // Initialize Sri Lanka Map
+    const map = L.map('srilankaMap').setView([7.8731, 80.7718], 8);
+    
+    // Add Tile Layer
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; CartoDB',
+        subdomains: 'abcd',
+        maxZoom: 19,
+        minZoom: 6
+    }).addTo(map);
+    
+    // Spice Harvesting Locations
+    const harvestLocations = [
+        // Cinnamon Locations (Western & Southern)
+        { lat: 7.2088, lng: 79.8735, name: "Negombo", spice: "Cinnamon", region: "Western", icon: "🌿" },
+        { lat: 6.5833, lng: 79.9667, name: "Kalutara", spice: "Cinnamon", region: "Western", icon: "🌿" },
+        { lat: 5.9492, lng: 80.4599, name: "Matara", spice: "Cinnamon", region: "Southern", icon: "🌿" },
+        { lat: 6.0535, lng: 80.2210, name: "Galle", spice: "Cinnamon", region: "Southern", icon: "🌿" },
+        
+        // Mace/Nutmeg Locations (Central)
+        { lat: 7.2906, lng: 80.6337, name: "Kandy", spice: "Mace", region: "Central", icon: "🌸" },
+        { lat: 7.4670, lng: 80.6234, name: "Matale", spice: "Mace", region: "Central", icon: "🌸" },
+        { lat: 7.2500, lng: 80.3500, name: "Kegalle", spice: "Mace", region: "Sabaragamuwa", icon: "🌸" },
+        { lat: 7.1500, lng: 80.5833, name: "Gampola", spice: "Mace", region: "Central", icon: "🌸" },
+        
+        // Pepper Locations (Central & Sabaragamuwa)
+        { lat: 7.4670, lng: 80.6234, name: "Matale", spice: "Pepper", region: "Central", icon: "⚫" },
+        { lat: 7.2906, lng: 80.6337, name: "Kandy", spice: "Pepper", region: "Central", icon: "⚫" },
+        { lat: 6.6900, lng: 80.3800, name: "Rathnapura", spice: "Pepper", region: "Sabaragamuwa", icon: "⚫" },
+        { lat: 7.4800, lng: 80.3600, name: "Kurunegala", spice: "Pepper", region: "North Western", icon: "⚫" },
+        
+        // Nutmeg Locations (North Central & Dry Zone)
+        { lat: 7.8600, lng: 80.6500, name: "Dambulla", spice: "Nutmeg", region: "Central", icon: "🌶️" },
+        { lat: 7.4800, lng: 80.3600, name: "Kurunegala", spice: "Nutmeg", region: "North Western", icon: "🌶️" },
+        { lat: 8.3500, lng: 80.3900, name: "Anuradhapura", spice: "Nutmeg", region: "North Central", icon: "🌶️" },
+        { lat: 6.1200, lng: 81.1200, name: "Hambantota", spice: "Nutmeg", region: "Southern", icon: "🌶️" }
+    ];
+    
+    // Color mapping for spices
+    const spiceColors = {
+        'Cinnamon': '#8B5A2B',
+        'Mace': '#E76F51',
+        'Pepper': '#2D6A4F',
+        'Nutmeg': '#E63946'
+    };
+    
+    // Add markers for each location
+    harvestLocations.forEach(location => {
+        const markerColor = spiceColors[location.spice];
+        
+        // Create custom marker icon
+        const customIcon = L.divIcon({
+            className: 'custom-marker',
+            html: `<div style="background: ${markerColor}; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">${location.icon}</div>`,
+            iconSize: [30, 30],
+            popupAnchor: [0, -15]
+        });
+        
+        const marker = L.marker([location.lat, location.lng], { icon: customIcon }).addTo(map);
+        
+        // Add popup with details
+        marker.bindPopup(`
+            <div style="font-family: 'Poppins', sans-serif; min-width: 180px;">
+                <h6 style="color: ${markerColor}; margin-bottom: 5px;">
+                    ${location.icon} ${location.spice}
+                </h6>
+                <strong>📍 ${location.name}</strong><br>
+                <small>Region: ${location.region}</small><br>
+                <small>Season: ${getSeasonForSpice(location.spice)}</small>
+            </div>
+        `);
+    });
+    
+    // Helper function to get season for spice
+    function getSeasonForSpice(spice) {
+        const seasons = {
+            'Cinnamon': 'May - August',
+            'Mace': 'June - October',
+            'Pepper': 'December - March',
+            'Nutmeg': 'July - November'
+        };
+        return seasons[spice] || 'Check season';
+    }
+    
+    // Add main city markers
+    const mainCities = [
+        { lat: 6.9271, lng: 79.8612, name: "Colombo", isCapital: true },
+        { lat: 7.2906, lng: 80.6337, name: "Kandy" },
+        { lat: 6.0328, lng: 80.2155, name: "Galle" },
+        { lat: 8.3500, lng: 80.3900, name: "Anuradhapura" }
+    ];
+    
+    mainCities.forEach(city => {
+        const cityIcon = L.divIcon({
+            className: 'city-marker',
+            html: `<div style="background: #D4A373; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">🏙️</div>`,
+            iconSize: [25, 25]
+        });
+        
+        L.marker([city.lat, city.lng], { icon: cityIcon }).addTo(map)
+            .bindPopup(`<strong>${city.name}</strong><br>Main City`);
+    });
+    
+    // Add a subtle zoom effect
+    setTimeout(() => {
+        map.invalidateSize();
+    }, 100);
+    
+    // Season status functions
+    function getCurrentMonth() {
+        return new Date().getMonth();
+    }
+    
+    const harvestSeasons = {
+        cinnamon: { start: 4, end: 7, monthRange: 'May - August', locations: 'Negombo, Kalutara, Matara, Galle' },
+        mace: { start: 5, end: 9, monthRange: 'June - October', locations: 'Kandy, Matale, Kegalle, Gampola' },
+        pepper: { start: 11, end: 2, monthRange: 'December - March', locations: 'Matale, Kandy, Rathnapura, Kurunegala' },
+        nutmeg: { start: 6, end: 10, monthRange: 'July - November', locations: 'Dambulla, Kurunegala, Anuradhapura, Hambantota' }
+    };
+    
+    function isInSeason(spice) {
+        const currentMonth = getCurrentMonth();
+        const season = harvestSeasons[spice];
+        
+        if (spice === 'pepper') {
+            return currentMonth >= season.start || currentMonth <= season.end;
+        } else {
+            return currentMonth >= season.start && currentMonth <= season.end;
+        }
+    }
+    
+    function getHarvestProgress(spice) {
+        const currentMonth = getCurrentMonth();
+        const season = harvestSeasons[spice];
+        
+        if (spice === 'pepper') {
+            if (currentMonth >= season.start || currentMonth <= season.end) {
+                let progress;
+                if (currentMonth >= season.start) {
+                    progress = ((currentMonth - season.start + 1) / 4) * 100;
+                } else {
+                    progress = 100;
+                }
+                return Math.min(progress, 100);
+            }
+            return 0;
+        } else {
+            if (currentMonth >= season.start && currentMonth <= season.end) {
+                const progress = ((currentMonth - season.start + 1) / (season.end - season.start + 1)) * 100;
+                return Math.min(progress, 100);
+            }
+            return 0;
+        }
+    }
+    
+    function updateHarvestStatus() {
+        const spices = ['cinnamon', 'mace', 'pepper', 'chilli'];
+        const spiceNames = {
+            cinnamon: { name: 'Cinnamon', progressBar: 'cinnamonProgress', statusEl: 'cinnamonStatus', activeIcon: '🌿', inactiveIcon: '🌱' },
+            mace: { name: 'Mace', progressBar: 'maceProgress', statusEl: 'maceStatus', activeIcon: '🌸', inactiveIcon: '🌿' },
+            pepper: { name: 'Pepper', progressBar: 'pepperProgress', statusEl: 'pepperStatus', activeIcon: '⚫', inactiveIcon: '◻️' },
+            chilli: { name: 'Nutmeg', progressBar: 'chilliProgress', statusEl: 'chilliStatus', activeIcon: '◻️', inactiveIcon: '🍅' }
+        };
+        
+        spices.forEach(spice => {
+            const inSeason = isInSeason(spice);
+            const progress = getHarvestProgress(spice);
+            const data = spiceNames[spice];
+            
+            const progressBar = document.getElementById(data.progressBar);
+            if (progressBar) {
+                progressBar.style.width = `${progress}%`;
+            }
+            
+            const statusEl = document.getElementById(data.statusEl);
+            if (statusEl) {
+                if (inSeason && progress > 0) {
+                    if (progress >= 80) {
+                        statusEl.innerHTML = `<i class="fas fa-check-circle"></i> ${data.activeIcon} Peak Harvest Season! ${Math.round(progress)}% complete`;
+                        statusEl.className = 'status-text status-harvesting';
+                    } else if (progress >= 30) {
+                        statusEl.innerHTML = `<i class="fas fa-seedling"></i> ${data.activeIcon} Active Harvesting - ${Math.round(progress)}% complete`;
+                        statusEl.className = 'status-text status-harvesting';
+                    } else {
+                        statusEl.innerHTML = `<i class="fas fa-hourglass-half"></i> ${data.activeIcon} Harvest Season Starting Soon`;
+                        statusEl.className = 'status-text status-upcoming';
+                    }
+                } else {
+                    statusEl.innerHTML = `<i class="fas fa-bed"></i> ${data.inactiveIcon} Off Season - Next harvest: ${harvestSeasons[spice].monthRange}`;
+                    statusEl.className = 'status-text status-off';
+                }
+            }
+        });
+    }
+    
+    // Animate progress bars on load
+    function animateProgressBars() {
+        const spices = ['cinnamon', 'mace', 'pepper', 'nutmeg'];
+        spices.forEach(spice => {
+            const progress = getHarvestProgress(spice);
+            const progressBar = document.getElementById(`${spice}Progress`);
+            if (progressBar) {
+                setTimeout(() => {
+                    progressBar.style.width = `${progress}%`;
+                }, 100);
+            }
+        });
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        updateHarvestStatus();
+        animateProgressBars();
+    });
+</script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

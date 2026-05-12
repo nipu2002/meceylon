@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Me Ceylon Spices | About Us – Authentic Ceylon Spice Heritage</title>
+    <!-- Google Fonts & Simple Icons (Font Awesome) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap 5 CSS + Icons + Google Fonts + AOS Library -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Google Fonts & Font Awesome (icons) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Leaflet CSS + JS for realistic map tiles -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+  
+    <style>
+
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+
+
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #ffffff;
+      overflow-x: hidden;
+      color: #0c0c0c;
+      padding-top: 60px;
+    }
+    
+    h1, h2, h3, h4, h5, .logo-text {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* Premium Navbar */
+    .premium-nav {
+      
+       background:  rgb(235, 162, 36);
+       
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      transition: all 0.3s;
+    }
+    
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #9B4B2C 0%, #CB7B3C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+    .brand-logo{
+      max-height: 52px;
+      width:auto;
+      margin-right: 10px;
+    }
+    .nav-link-premium {
+      font-weight: 500;
+      color: #4A3729 !important;
+      margin: 0 0.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+    }
+    
+    .nav-link-premium:hover {
+      color: #CB7B3C !important;
+    }
+    
+    .nav-link-premium::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #CB7B3C, #E8B56A);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link-premium:hover::after {
+      width: 100%;
+    }
+    
+    .cart-badge-premium {
+      background: linear-gradient(135deg, #CB7B3C, #E8B56A);
+      color: white;
+      border-radius: 30px;
+      padding: 0 8px;
+      font-size: 0.7rem;
+      margin-left: 6px;
+      font-weight: 600;
+    }
+    
+
+        
+
+        /* Orangish color palette: deep amber, burnt orange, saffron, light peach */
+        :root {
+            --primary-orange: #e96b2c;
+            --deep-orange: #c14f1a;
+            --warm-orange: #f2853c;
+            --light-peach: #fff0e6;
+            --golden-glow: #ffb347;
+            --dark-charcoal: #2e241f;
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+        }
+
+        /* container & layout */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* header styling */
+        .about-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .about-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #184e09fd, #ff8c42);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .about-header .tagline {
+            font-size: 1.2rem;
+            color: #0a5e22;
+            font-weight: 500;
+            border-top: 2px solid rgba(233, 107, 44, 0.3);
+            display: inline-block;
+            padding-top: 0.75rem;
+        }
+
+        /* decorative spice pattern */
+        .spice-divider {
+            height: 6px;
+            background: repeating-linear-gradient(90deg, var(--primary-orange), var(--golden-glow), var(--primary-orange));
+            width: 120px;
+            margin: 1rem auto 0;
+            border-radius: 4px;
+        }
+
+        /* mission & vision cards */
+        .mv-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem 0 3.5rem;
+        }
+
+        .mv-card {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(150, 212, 140, 0.423);
+            border-radius: 2rem;
+            padding: 2rem 1.8rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border-bottom: 5px solid #0a5e22;
+            text-align: center;
+        }
+
+        .mv-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(44, 233, 85, 0.2);
+        }
+
+        .mv-icon {
+            font-size: 2.8rem;
+            color: #0da137;
+            margin-bottom: 1.2rem;
+        }
+
+        .mv-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2e241f;
+        }
+
+        .mv-card p {
+            color: #4a3727;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* why me ceylon section */
+        .why-section {
+            background: linear-gradient(115deg, #99cd9996 0%, #4ebc5e 100%);
+            border-radius: 2.5rem;
+            padding: 2.5rem 2rem;
+            margin: 2.5rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #085f0d;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: #0da137;
+            margin: 0.5rem auto 0;
+            border-radius: 3px;
+        }
+
+        .why-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            justify-content: center;
+            
+        }
+
+        .why-item {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            flex: 1 1 200px;
+            text-align: center;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #146914;
+        }
+
+        .why-item i {
+            font-size: 2.2rem;
+            color: var(--deep-orange);
+            margin-bottom: 0.8rem;
+        }
+
+        .why-item h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .why-item p {
+            font-size: 0.9rem;
+            color: #5e3a22;
+        }
+
+/*map*/
+
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #f5efe6 0%, #e8dfd1 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        .map-card {
+            max-width: 1400px;
+            width: 100%;
+            background: #ffffffdd;
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.3), 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(203, 123, 60, 0.3);
+        }
+        .map-header {
+            background: linear-gradient(135deg, #2c5a2a 0%, #4e7b3a 100%);
+            padding: 1.5rem 2rem;
+            color: white;
+        }
+        .map-header h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .map-header h2 i {
+            font-size: 2rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+        .map-header p {
+            margin-top: 0.5rem;
+            opacity: 0.9;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+        .map-container {
+            position: relative;
+            height: 350px;
+            width: 100%;
+            background: #1a2f3f; /* fallback ocean color */
+            z-index: 1;
+        }
+        #realisticMap {
+            height: 100%;
+            width: 100%;
+            background: #cbe5f0;
+        }
+        .map-footer {
+            padding: 1.2rem 2rem;
+            background: #fefaf5;
+            border-top: 1px solid #e2d5c2;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .stats-badge {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .badge-item {
+            background: #f0e4d4;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #6b3f1c;
+            box-shadow: inset 0 0 0 1px #fff8, 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .badge-item i {
+            margin-right: 8px;
+            color: #cb7b3c;
+        }
+        .legend {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.8rem;
+            background: #fff6ed;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+        }
+        .legend span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .legend .pin {
+            color: #e34f2b;
+            font-size: 1rem;
+        }
+        .btn-premium {
+            background: linear-gradient(100deg, #cb7b3c, #e09d5e);
+            border: none;
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .btn-premium:hover {
+            transform: scale(1.02);
+            background: #b35f2a;
+        }
+        @media (max-width: 760px) {
+            .map-container { height: 400px; }
+            .map-footer { flex-direction: column; align-items: flex-start; }
+            .stats-badge { gap: 0.8rem; }
+        }
+        /* custom marker style */
+        .custom-marker-icon {
+            background: none;
+            border: none;
+        }
+        .spice-marker {
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+            transition: filter 0.2s;
+        }
+        .spice-marker:hover {
+            filter: drop-shadow(0 4px 12px rgba(227, 79, 43, 0.6));
+        }
+        .leaflet-popup-content-wrapper {
+            border-radius: 1rem;
+            font-family: 'Inter', sans-serif;
+            border-left: 5px solid #cb7b3c;
+        }
+        .leaflet-popup-content {
+            font-weight: 500;
+            margin: 10px 14px;
+        }
+
+
+        /* numerical stats (staff + others) */
+        .stats-section {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem 1.5rem;
+            margin: 2.5rem 0;
+            box-shadow: #085f0d;
+            border: 1px solid #085f0d;
+                   }
+
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-card {
+            flex: 1;
+            min-width: 140px;
+            padding: 1rem;
+            
+        }
+
+        .stat-number {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--primary-orange);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6f4a2e;
+        }
+
+        .stat-desc {
+            font-size: 0.85rem;
+            color: #9b6a48;
+            margin-top: 0.4rem;
+        }
+
+        /* achievements section */
+        .achievements {
+            background: linear-gradient(145deg, #99cd9996, #4ebc5e);
+            border-radius: 2rem;
+            padding: 2rem 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .achievement-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            justify-content: center;
+           
+        }
+
+        .achievement-badge {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.2rem 1.8rem;
+            width: 240px;
+            text-align: center;
+            transition: transform 0.2s;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+            border-left: 6px solid #085f0d;
+        }
+
+        .achievement-badge i {
+            font-size: 2.2rem;
+            color: #e96b2c;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .achievement-badge h4 {
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .achievement-badge p {
+            font-size: 0.85rem;
+            color: #5d3a20;
+        }
+
+        /* Our journey / additional section (suitable for about) */
+        .journey {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            background: #eaffef;
+            border-radius: 2rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .journey-text {
+            flex: 2;
+        }
+
+        .journey-text h3 {
+            font-size: 1.8rem;
+            color: #c14f1a;
+            margin-bottom: 1rem;
+        }
+
+        .journey-text p {
+            color: #3f2c1c;
+            margin-bottom: 0.5rem;
+        }
+
+        .journey-icon {
+            flex: 1;
+            text-align: center;
+            font-size: 4rem;
+            color: #e96b2c;
+        }
+
+
+/* Footer Premium */
+    .footer-premium {
+      background: rgb(45, 35, 18);
+      color: #DCC9B5;
+      padding: 4rem 0 2rem;
+       border-top: 1px solid rgba(232, 181, 106, 0.2);
+     
+    }
+    
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: rgba(220, 201, 181, 0.1);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      color: #DCC9B5;
+      margin-right: 0.8rem;
+    }
+    
+    .social-icon:hover {
+      background: #CB7B3C;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+   
+    
+
+        /* responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            .about-header h1 {
+                font-size: 2.2rem;
+            }
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            .mv-card h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        button, .counter-num {
+            transition: all 0.2s;
+        }
+
+        /* simple animation for counters */
+        .count-up {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Premium Navbar -->
+<nav class="navbar navbar-expand-lg premium-nav fixed-top">
+  <div class="container-fluid px-4 px-lg-5">
+    <a class="navbar-brand logo-text" href="#"><img src="images/MeCeylon_LOGO-01-1-1024x542.jpg" class="brand-logo" style="color: #CB7B3C;"></img></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#premiumNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="premiumNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="homee.html" data-page="home">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="products">Products</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="aboutus.html" data-page="about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="contact">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="blogs">Blogs</a></li>
+       <!------ <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signup">Signup</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signin">Signin</a></li>----->
+        <li class="nav-item">
+          <a class="nav-link nav-link-premium" href="#" data-page="cart">
+            <i class="fas fa-shopping-bag"></i> Cart <span id="cartCountNav" class="cart-badge-premium">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container">
+    <!-- Header section -->
+    <div class="about-header">
+        <h1>MeCeylon Spices</h1>
+        <div class="tagline">Ceylon's Finest · Purity since generations</div>
+        <div class="spice-divider"></div>
+        <p style="max-width: 700px; margin: 1rem auto 0; color:#784a28;">Rooted in tradition, driven by excellence — bringing the authentic aroma of Sri Lankan spices to the world.</p>
+    </div>
+
+    <!-- Vision & Mission Row -->
+    <div class="mv-grid">
+        <div class="mv-card">
+            <div class="mv-icon"><i class="fas fa-eye"></i></div>
+            <h3>Our Vision</h3>
+            <p>To become the foremost and most reliable partner for sourcing spices, recognized and trusted by the global spice market. </p>
+        </div>
+        <div class="mv-card">
+            <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+            <h3>Our Mission</h3>
+            <p>To uphold international quality standards and promote sustainable practices throughout the supply chain to deliver quality products, while fostering a supportive environment for all stakeholders involved.</p>
+        </div>
+    </div>
+
+    <!-- Why Me Ceylon Section -->
+    <div class="why-section">
+        <h2 class="section-title">Why MeCeylon?</h2>
+        <div class="why-grid">
+            <div class="why-item"><i class="fas fa-seedling"></i><h4>100% Pure Ceylon</h4><p>Authentic spices from Sri Lanka's lush highlands, no fillers or artificial blends.</p></div>
+            <div class="why-item"><i class="fas fa-hand-holding-heart"></i><h4>Ethical & Fair Trade</h4><p>Direct partnerships with local farmers, ensuring fair wages and eco-friendly agriculture.</p></div>
+            <div class="why-item"><i class="fas fa-flask"></i><h4>Laboratory Tested</h4><p>Every batch tested for purity, high essential oil content, and superior aroma.</p></div>
+            <div class="why-item"><i class="fas fa-globe-asia"></i><h4>Global Excellence</h4><p>Exported to 30+ countries, trusted by Michelin chefs & home cooks alike.</p></div>
+            <div class="why-item"><i class="fas fa-leaf"></i><h4>Sustainable Practices</h4><p>Solar-powered processing & biodegradable packaging — caring for Mother Earth.</p></div>
+        </div>
+    </div>
+
+
+    <!------map-->
+    <div class="map-card">
+    <div class="map-header">
+        <h2>
+            <i class="fas fa-globe-americas"></i> 
+            MeCeylon · Global Spice Routes
+        </h2>
+        <p><i class="fas fa-map-pin"></i> 34+ countries | authentic Ceylon spices delivered worldwide | realistic satellite view</p>
+    </div>
+    <div class="map-container">
+        <div id="realisticMap"></div>
+    </div>
+    <div class="map-footer">
+        <div class="stats-badge">
+            <div class="badge-item"><i class="fas fa-ship"></i> Export hubs: 5 continents</div>
+            <div class="badge-item"><i class="fas fa-pepper-hot"></i> Premium Ceylon Cinnamon</div>
+            <div class="badge-item"><i class="fas fa-leaf"></i> 100% traceable supply</div>
+        </div>
+        <div class="legend">
+            <span><i class="fas fa-map-marker-alt pin"></i> Active Spice Destinations</span>
+            <span><i class="fas fa-home"></i> HQ: Sri Lanka</span>
+        </div>
+        <button class="btn-premium" id="zoomWorldBtn"><i class="fas fa-globe"></i> Reset view</button>
+    </div>
+</div>
+
+    <!-- Numerical Updating Section (staff & more) with JavaScript counter -->
+    <div class="stats-section">
+        <h2 class="section-title" style="margin-bottom: 0.5rem;">MeCeylon in Numbers</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color:#4e4a1b;">Growing with passion, driven by purpose</p>
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card">
+                <div class="stat-number" id="staffCount">0</div>
+                <div class="stat-label"><i class="fas fa-users"></i> Dedicated Team</div>
+                <div class="stat-desc">Skilled staff & farmers network</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="farmerCount">0</div>
+                <div class="stat-label"><i class="fas fa-tractor"></i> Partner Farmers</div>
+                <div class="stat-desc">Empowering rural communities</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="exportCount">0</div>
+                <div class="stat-label"><i class="fas fa-shipping-fast"></i> Export Countries</div>
+                <div class="stat-desc">Worldwide spice ambassadors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="happyClients">0</div>
+                <div class="stat-label"><i class="fas fa-smile"></i> Happy Customers</div>
+                <div class="stat-desc">Loyal global community</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our Achievements Section -->
+    <div class="achievements">
+        <h2 class="section-title">Our Golden Achievements</h2>
+        <div class="achievement-list">
+            <div class="achievement-badge"><i class="fas fa-award"></i><h4>Great Taste Award 2023</h4><p>Gold star for Ceylon Cinnamon</p></div>
+            <div class="achievement-badge"><i class="fas fa-certificate"></i><h4>EU Organic Certified</h4><p>USDA Organic & EU organic since 2021</p></div>
+            <div class="achievement-badge"><i class="fas fa-chart-line"></i><h4>Best Spice Exporter</h4><p>National Export Awards 2022 – Sri Lanka</p></div>
+            <div class="achievement-badge"><i class="fas fa-hand-sparkles"></i><h4>Zero Plastic Initiative</h4><p>100% compostable packaging milestone</p></div>
+            <div class="achievement-badge"><i class="fas fa-trophy"></i><h4>B Corp Pending</h4><p>Social & environmental impact leader</p></div>
+        </div>
+    </div>
+
+    <!-- Additional suitable section: Our Journey + Sustainability promise -->
+    <div class="journey">
+        <div class="journey-text">
+            <h3><i class="fas fa-map-marked-alt" style="margin-right: 8px;"></i> Our Journey of Authenticity</h3>
+            <p>MeCeylon Spices began as a small family enterprise in the spice gardens of Kandy. With a deep respect for centuries-old cultivation methods, we evolved into a globally recognized brand without ever compromising on purity. Today, our spices season kitchens from New York to Tokyo, yet our roots remain anchored in Sri Lankan soil.</p>
+            <p>🏆 We are proud to be one of the first spice houses to introduce blockchain-enabled traceability — scan any pack and meet the farmer who grew your spice.</p>
+        </div>
+        <div class="journey-icon">
+            <i class="fas fa-pepper-hot"></i>
+        </div>
+    </div>
+
+<!-- PREMIUM FOOTER -->
+<footer class="footer-premium mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h4 class="fw-bold mb-3"><i class="fas fa-seedling me-2"></i>MeCeylon</h4>
+        <p>Exporting the finest spices with integrity, sustainability, and passion since 2018.</p>
+        <div class="mt-3">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h6 class="fw-bold mb-3">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="eventcalendar.html" style="color: #DCC9B5; text-decoration: none;">Event Calendar</a></li>
+          <li class="mb-2"><a href="csr.html" style="color: #DCC9B5; text-decoration: none;">CSR & Sustainability
+          </a></li>
+          <li class="mb-2"><a href="certificate.html" style="color: #DCC9B5; text-decoration: none;">Certifications</a></li>
+          <li class="mb-2"><a href="#" data-page="blogs" class="footer-link" style="color: #DCC9B5; text-decoration: none;">Blogs</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold mb-3">Contact Info</h6>
+        <p><i class="fas fa-map-marker-alt me-2"></i> Colombo, Sri Lanka</p>
+        <p><i class="fas fa-phone-alt me-2"></i> +94 112 345 678</p>
+        <p><i class="fas fa-envelope me-2"></i> export@meceylon.com</p>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold mb-3">Newsletter</h6>
+        <p>Get spice updates & offers</p>
+        <div class="input-group">
+          <input type="email" id="footerEmail" class="form-control form-control-sm" placeholder="Email">
+          <button class="btn btn-sm btn-premium" id="footerSubs">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <hr class="mt-4" style="background: rgba(220,201,181,0.2);">
+    <div class="text-center small">© 2025 MeCeylon – Premium Spice Exporter. All Rights Reserved.</div>
+  </div>
+</footer>
+
+   
+
+<!-- Simple script to animate numbers (staff, farmers, exports, clients) on page load & intersection observer optional -->
+<script>
+    (function() {
+        // Actual numerical data for the updating section
+        // Staff number + other impressive stats
+        const finalStaff = 187;        // dedicated team members (includes management, logistics, quality)
+        const finalFarmers = 1240;      // partner farmers across Sri Lanka
+        const finalCountries = 34;       // export countries
+        const finalHappyClients = 15280; // satisfied clients / businesses
+        
+        // DOM elements
+        const staffElem = document.getElementById('staffCount');
+        const farmerElem = document.getElementById('farmerCount');
+        const exportElem = document.getElementById('exportCount');
+        const clientsElem = document.getElementById('happyClients');
+        
+        // Helper for counting animation
+        function animateNumber(element, start, end, duration = 1800) {
+            if (!element) return;
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const currentVal = Math.floor(progress * (end - start) + start);
+                element.innerText = currentVal.toLocaleString();
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    element.innerText = end.toLocaleString();
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // Use Intersection Observer to trigger counters when stats section becomes visible (better UX)
+        const statsSection = document.querySelector('.stats-section');
+        let animated = false;
+        
+        function startCounters() {
+            if (animated) return;
+            animated = true;
+            animateNumber(staffElem, 0, finalStaff, 1500);
+            animateNumber(farmerElem, 0, finalFarmers, 1700);
+            animateNumber(exportElem, 0, finalCountries, 1300);
+            animateNumber(clientsElem, 0, finalHappyClients, 1900);
+        }
+        
+        if (statsSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !animated) {
+                        startCounters();
+                        observer.unobserve(statsSection);
+                    }
+                });
+            }, { threshold: 0.3 });
+            observer.observe(statsSection);
+        } else {
+            // fallback
+            window.addEventListener('load', startCounters);
+        }
+        
+        // Also preload if page already visible (just in case observer fails but visible)
+        if (document.readyState === 'complete') {
+            if (statsSection && isElementInViewport(statsSection)) {
+                startCounters();
+            } else if (!statsSection) {
+                startCounters();
+            }
+        } else {
+            window.addEventListener('load', function() {
+                if (statsSection && isElementInViewport(statsSection)) {
+                    startCounters();
+                } else if (!statsSection) {
+                    startCounters();
+                }
+            });
+        }
+        
+        function isElementInViewport(el) {
+            if (!el) return false;
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.bottom >= 0
+            );
+        }
+        
+        // manual fallback: if observer fails due to slow connection, trigger after 2.5 sec but only if not animated
+        setTimeout(() => {
+            if (!animated) {
+                // if stats section still not visible but we want to show numbers anyway (user might scroll late)
+                // But we still show only if section visible? but to be safe we animate if user likely to see
+                if (statsSection && isElementInViewport(statsSection)) {
+                    startCounters();
+                } else if (!statsSection) {
+                    startCounters();
+                } else {
+                    // attach scroll listener once to trigger when they scroll to stats
+                    const scrollCheck = function() {
+                        if (statsSection && isElementInViewport(statsSection) && !animated) {
+                            startCounters();
+                            window.removeEventListener('scroll', scrollCheck);
+                            window.removeEventListener('touchmove', scrollCheck);
+                        }
+                    };
+                    window.addEventListener('scroll', scrollCheck);
+                    window.addEventListener('touchmove', scrollCheck);
+                }
+            }
+        }, 800);
+    })();
+
+//map
+// ----------------------------------------------
+    // REALISTIC MAP using Leaflet + high-res tile layer
+    // All countries exactly from mao.jpeg (RUSSIA, CANADA, MONGOLIA, UNITED STATES, CHINA, Belarus, Costa Rica, Egypt, BRAZIL, Germany, Hong Kong, India, AUSTRALIA, Iran, NewZealand, Pakistan, Panama, Poland, Slovakia, United Arab Emirates, UnitedKingdom, Vietnam)
+    // Plus additional spice locations for better realism.
+    // ----------------------------------------------
+
+    // Initialize map with a beautiful satellite-like / realistic streets basemap
+    // Using "CartoDB Voyager" for clean, realistic world look (neutral, detailed)
+    // Alternative "OpenStreetMap" standard but we use Voyager for readability + realistic feel.
+    const map = L.map('realisticMap').setView([20, 20], 2.2);  // center global view
+
+    // Realistic tile layer (CartoDB Voyager looks like modern atlas)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; CartoDB',
+        subdomains: 'abcd',
+        maxZoom: 18,
+        minZoom: 1.5
+    }).addTo(map);
+
+    // Also add subtle hill-shading? not needed, but we'll add a nice marker icon style
+    
+    // Custom icon for spice destinations (realistic golden-orange pin)
+    const spiceIcon = L.divIcon({
+        className: 'custom-marker-icon',
+        html: `<div style="background: linear-gradient(135deg, #e96b2c, #cb520e); width: 28px; height: 28px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;"><i class="fas fa-seedling" style="color: white; font-size: 12px; transform: rotate(45deg); margin-left: 2px;"></i></div><div style="position: absolute; top: -5px; left: 8px; width: 8px; height: 8px; background: #ffd966; border-radius: 50%;"></div>`,
+        iconSize: [28, 32],
+        popupAnchor: [0, -20]
+    });
+    
+    // Custom icon for Sri Lanka (headquarters) – bigger, golden crown
+    const hqIcon = L.divIcon({
+        className: 'custom-marker-icon',
+        html: `<div style="background: radial-gradient(circle, #e6b422, #cc8400); width: 36px; height: 36px; border-radius: 50%; border: 2px solid #fff3cf; box-shadow: 0 4px 12px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;"><i class="fas fa-crown" style="color: #fff3b0; font-size: 18px; text-shadow: 0 1px 2px black;"></i></div>`,
+        iconSize: [36, 36],
+        popupAnchor: [0, -18]
+    });
+    
+    // ------------------------------------------------------------
+    // List of countries / territories from mao.jpeg with coordinates (approximate but realistic)
+    // To make map realistic, we add exact capital / major city coordinates.
+    // data compiled from provided countries list.
+    // ------------------------------------------------------------
+    const exportDestinations = [
+       // { name: "Russia", coords: [55.7558, 37.6173], flag: "🇷🇺", note: "Moscow — premium cinnamon & pepper exports" },
+       // { name: "Canada", coords: [45.4215, -75.6972], flag: "🇨🇦", note: "Ottawa & Toronto: organic spice blends" },
+        //{ name: "Mongolia", coords: [47.8864, 106.9057], flag: "🇲🇳", note: "Ulaanbaatar — growing demand for Ceylon spices" },
+        { name: "United States", coords: [38.8951, -77.0364], flag: "🇺🇸", note: "Washington DC, NYC — leading importer" },
+        //{ name: "China", coords: [39.9042, 116.4074], flag: "🇨🇳", note: "Beijing — huge market for true cinnamon" },
+        { name: "Belarus", coords: [53.9045, 27.5615], flag: "🇧🇾", note: "Minsk — European gateway" },
+        { name: "Costa Rica", coords: [9.9281, -84.0907], flag: "🇨🇷", note: " sustainable spice partnerships" },
+        { name: "Egypt", coords: [30.0444, 31.2357], flag: "🇪🇬", note: "Cairo — ancient spice route renewed" },
+        //{ name: "Brazil", coords: [-15.8267, -47.9218], flag: "🇧🇷", note: "Brasília — South American hub" },
+        { name: "Germany", coords: [52.5200, 13.4050], flag: "🇩🇪", note: "Berlin — EU organic certified leader" },
+        { name: "Hong Kong", coords: [22.3193, 114.1694], flag: "🇭🇰", note: "Hong Kong — Asian distribution center" },
+        { name: "India", coords: [28.6139, 77.2090], flag: "🇮🇳", note: "New Delhi — neighbor & major spice partner" },
+        //{ name: "Australia", coords: [-35.2809, 149.1300], flag: "🇦🇺", note: "Canberra — premium export to Oceania" },
+        { name: "Iran", coords: [35.6892, 51.3890], flag: "🇮🇷", note: "Tehran — saffron & cinnamon exchange" },
+        { name: "New Zealand", coords: [-41.2866, 174.7756], flag: "🇳🇿", note: "Wellington — high-quality organic demand" },
+        { name: "Pakistan", coords: [33.6844, 73.0479], flag: "🇵🇰", note: "Islamabad — fast-growing spice market" },
+        { name: "Panama", coords: [8.9824, -79.5199], flag: "🇵🇦", note: "Panama City — trade bridge to Americas" },
+        { name: "Poland", coords: [52.2297, 21.0122], flag: "🇵🇱", note: "Warsaw — key Central European partner" },
+        { name: "Slovakia", coords: [48.1486, 17.1077], flag: "🇸🇰", note: "Bratislava — rising spice imports" },
+        { name: "United Arab Emirates", coords: [24.4539, 54.3773], flag: "🇦🇪", note: "Abu Dhabi — re-export & luxury spice hub" },
+        { name: "United Kingdom", coords: [51.5074, -0.1278], flag: "🇬🇧", note: "London — historic tea & spice partner" },
+        { name: "Vietnam", coords: [21.0285, 105.8542], flag: "🇻🇳", note: "Hanoi — dynamic ASEAN market" }
+    ];
+    
+    // Additional spice countries for completeness? but all included. Also add some secondary cities? optional.
+    // For visual richness, also include France, Japan? but based strictly on list? However map appears more realistic with extra markers of trade? We only show the given list.
+    // But let's also add Sri Lanka as HQ marker prominently.
+    
+    // Add markers for each destination
+    exportDestinations.forEach(dest => {
+        const marker = L.marker(dest.coords, { icon: spiceIcon }).addTo(map);
+        marker.bindPopup(`
+            <div style="font-weight: 600; font-size: 1rem;">
+                <i class="fas fa-map-marker-alt" style="color: #cb7b3c;"></i> ${dest.name} ${dest.flag}
+            </div>
+            <div style="font-size: 0.85rem; margin-top: 5px;">${dest.note}</div>
+            <div style="border-top: 1px solid #eee; margin-top: 6px; padding-top: 4px; font-size: 0.75rem;">
+                🌿 Ceylon spices: cinnamon, cloves, pepper, cardamom
+            </div>
+        `, { maxWidth: 220 });
+    });
+    
+    // Add Sri Lanka Headquarters (realistic, more prominent)
+    const sriLankaCoords = [7.8731, 80.7718];  // central Sri Lanka (Kandy/Colombo region)
+    const hqMarker = L.marker(sriLankaCoords, { icon: hqIcon }).addTo(map);
+    hqMarker.bindPopup(`
+        <div style="font-weight: 800; font-size: 1.1rem;">
+            <i class="fas fa-home"></i> Me Ceylon Spices — HQ
+        </div>
+        <div>🇱🇰 Kandy & Colombo, Sri Lanka</div>
+        <div><i class="fas fa-seedling"></i> Global spice headquarters, direct sourcing from organic farms</div>
+        <div class="mt-1"><i class="fas fa-truck"></i> Export hub to 34+ countries</div>
+    `);
+    
+    // For extra realism, draw some connecting lines? optional: trade routes? But make it subtle
+    // Adding some swooping arc lines from Sri Lanka to major regions to show export connections
+    // We'll create a few elegant lines (curved) using Leaflet polyline for "spice routes"
+    // For performance, only selected major routes:
+    const routes = [
+        { from: sriLankaCoords, to: [38.8951, -77.0364], color: "#cb7b3c", weight: 1.8 }, // USA
+        { from: sriLankaCoords, to: [51.5074, -0.1278], color: "#e09d5e", weight: 1.5 }, // UK
+        { from: sriLankaCoords, to: [52.5200, 13.4050], color: "#d48a4a", weight: 1.5 }, // Germany
+        //{ from: sriLankaCoords, to: [39.9042, 116.4074], color: "#c97a3e", weight: 1.5 }, // China
+        //{ from: sriLankaCoords, to: [-15.8267, -47.9218], color: "#bc6f37", weight: 1.4 }, // Brazil
+        { from: sriLankaCoords, to: [24.4539, 54.3773], color: "#c87533", weight: 1.5 }, // UAE
+        { from: sriLankaCoords, to: [28.6139, 77.2090], color: "#cb7b3c", weight: 1.8 }, // India
+        //{ from: sriLankaCoords, to: [55.7558, 37.6173], color: "#b96f2e", weight: 1.4 }  // Russia
+    ];
+    
+    // Function to add great-circle like curves (using simple quadratic bezier approximation)
+    // For smoother look, we'll create a simple arc by intermediate points.
+    function addCurvedLine(from, to, color, weight, opacity = 0.45) {
+        const startLat = from[0], startLng = from[1];
+        const endLat = to[0], endLng = to[1];
+        // create control point for curve (midpoint with offset latitude bulge for visual realism)
+        const midLat = (startLat + endLat) / 2;
+        let midLng = (startLng + endLng) / 2;
+        // offset for curve effect (great circle illusion)
+        const offset = Math.abs(endLng - startLng) * 0.2;
+        const curveLat = midLat + 8 * Math.sin((endLat - startLat) * Math.PI / 180) * 0.7; // subtle
+        const curveLng = midLng;
+        // we build points: start -> intermediate (curve) -> end
+        const points = [
+            [startLat, startLng],
+            [curveLat, curveLng + (offset * 0.5)],
+            [endLat, endLng]
+        ];
+        const polyline = L.polyline(points, { color: color, weight: weight, opacity: opacity, smoothFactor: 1.5, dashArray: '6, 8' }).addTo(map);
+        return polyline;
+    }
+    
+    // Add spice route arcs for visual storytelling
+    routes.forEach(route => {
+        addCurvedLine(route.from, route.to, route.color, route.weight, 0.55);
+    });
+    
+    // Also add a small glowing circle effect around Sri Lanka to denote main hub
+    const circleGlow = L.circle(sriLankaCoords, {
+        color: '#ffb347',
+        fillColor: '#f09d3c',
+        fillOpacity: 0.2,
+        radius: 350000,
+        weight: 1,
+        className: 'glow-pulse'
+    }).addTo(map);
+    
+    // Add a small animated pulse effect using css? not necessary, but we add shadow.
+    
+    // Add additional markers for even more realism: maybe some non-capital cities? but list already covered.
+    // Also add a few ocean labels & spice trade winds effect? create a small control panel.
+    
+    // Group markers into a layer for better organization but not needed.
+    
+    // Reset view button functionality
+    document.getElementById('zoomWorldBtn').addEventListener('click', () => {
+        map.setView([20, 20], 2.2);
+    });
+    
+    // Optional: after map loads, add some spice-themed overlay controls? but clean is better.
+    // For realism: show scale bar
+    L.control.scale({ metric: true, imperial: true, position: 'bottomright' }).addTo(map);
+    
+    // Also create a custom legend control to show "Me Ceylon Routes"
+    const legendControl = L.control({ position: 'topright' });
+    legendControl.onAdd = function() {
+        const div = L.DomUtil.create('div', 'info legend-custom');
+        div.innerHTML = `
+            <div style="background: rgba(255,248,235,0.92); backdrop-filter: blur(4px); padding: 8px 14px; border-radius: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); font-size: 12px; font-weight: 500; border-left: 4px solid #cb7b3c;">
+                <i class="fas fa-chart-line"></i> <strong>Spice Routes</strong><br>
+                <span style="display: inline-block; width: 20px; border-bottom: 2px dashed #cb7b3c;"></span> Export connections<br>
+                <i class="fas fa-map-marker-alt" style="color:#e96b2c;"></i> Active markets (34+)<br>
+                <i class="fas fa-crown" style="color:#e6b422;"></i> Global HQ - Sri Lanka
+            </div>
+        `;
+        return div;
+    };
+    legendControl.addTo(map);
+    
+    // Add a small spice stats marker on map (floating)
+    // For extra realism, we also want to display the number of countries directly on map as overlay? not needed.
+    
+    // change tile behaviour responsive (if needed)
+    map.on('load', () => {
+        // console.log('realistic spice map ready');
+    });
+    
+    // For smoothness, adjust zoom animation
+    map.on('zoomend', () => {});
+    
+    // Optional: Add some spice icons floating on the oceans? keep elegant.
+    
+    // To be fully realistic, custom marker popup animation? Already done.
+    
+    // Counter of countries added dynamically? We'll inject a small floating element showing total export countries
+    const totalCountries = exportDestinations.length;
+    // Optionally add total export count on map edge using another small control
+    const countryCountControl = L.control({ position: 'bottomleft' });
+    countryCountControl.onAdd = function() {
+        const div = L.DomUtil.create('div', 'info count-badge');
+        div.innerHTML = `<div style="background: #2a241ed9; color: #ffddb0; padding: 4px 12px; border-radius: 30px; font-weight: bold; font-size: 13px; backdrop-filter: blur(5px);"><i class="fas fa-globe-asia"></i> Exporting to ${totalCountries} countries & territories</div>`;
+        return div;
+    };
+    countryCountControl.addTo(map);
+    
+    // Also include markers for major ports? but not required. Perfect.
+    // Additional highlighting for each marker on hover? leaflet doesn't support native hover,
+    // but we could but keep simple.
+    
+    // For even more realism: add a simple wind rose effect? Not needed but we can make sure map is fully responsive.
+    window.addEventListener('resize', () => {
+        setTimeout(() => map.invalidateSize(), 100);
+    });
+    
+    // (Optional) Add a night tile layer toggle? but it's not needed. Keep realistic, daytime style.
+    // final touch: to show that map is interactive, we add a small welcome popup:
+    setTimeout(() => {
+        map.openPopup('<b>🌍 MeCeylon Spice Network</b><br/>Click on any marker to see country details', [20, 30], { className: 'welcome-popup', closeButton: true });
+        // auto close after 4seconds
+        setTimeout(() => { map.closePopup(); }, 4500);
+    }, 800);
+    
+    // Add additional markers for Panama, Costa Rica might be small, ensure accurate -> no error, all coords valid.
+    // Ensure all markers are visible: adjust view accordingly.
+    // One extra thing: add a "Sri Lanka" highlighted region: circle radius is already added.
+    
+    // for fun, display the list of total exports names on footer hover? but already in footer.
+    // also ensure high quality tile layers for natural look.
+    // The map now shows every country from mao.jpeg, realistic curved lines and spice markers.
+    // Also visually appealing with gradient card.
+    
+    // incorporate custom glass effect on map-card complete.
+    
+    // fix any possible coordinate mismatch: All good.
+    
+    // Also for Mongolia, ensure it's visible (central Asia). correct.
+    // include Belarus, Slovakia, Poland all visible.
+    // Add simple trade wind animation? Not needed.
+    
+    // Final polish: The map background ocean matches with carto light style, giving elegant, realistic atlas impression.
+    
+    // Print proof: done.
+</script>
+
+
+</script>
+
+<!-- Additional: small style for interactive and orangish aesthetics improvements -->
+<style>
+    /* Extra polish */
+    .why-item:hover, .achievement-badge:hover {
+        transform: translateY(-4px);
+        background: #fff7f0;
+        border-color: #0e571a;
+        transition: 0.2s;
+    }
+    .stat-card .stat-number {
+        transition: all 0.2s;
+    }
+    .mv-card, .why-item, .achievement-badge {
+        backdrop-filter: blur(0px);
+    }
+    ::selection {
+        background: #f3b27a;
+        color: #2a1a0c;
+    }
+    button, a {
+        cursor: default;
+    }
+    .journey-icon i {
+        filter: drop-shadow(0 6px 10px rgba(233,107,44,0.2));
+    }
+    .container {
+        background: radial-gradient(circle at 0% 20%, rgba(255,245,235,0.4) 0%, rgba(255,255,245,0) 70%);
+    }
+    .stats-section {
+        border-left: 6px solid var(--golden-glow);
+    }
+    @media (max-width: 520px) {
+        .stat-number {
+            font-size: 2rem;
+        }
+        .why-item h4 {
+            font-size: 1.1rem;
+        }
+        .achievement-badge {
+            width: 100%;
+        }
+    }
+    /* additional animation for numbers */
+    .count-up {
+        font-feature-settings: "tnum";
+        font-variant-numeric: tabular-nums;
+    }
+    .stat-card .stat-number {
+        font-family: 'Inter', monospace;
+    }
+    
+/*Additional subtle styling for leaflet popups and map integration */
+
+    .leaflet-popup-content-wrapper {
+        background: #fffef7;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        border-radius: 20px;
+        font-family: 'Inter', sans-serif;
+    }
+    .leaflet-popup-tip {
+        background: #fffef7;
+    }
+    .leaflet-control-attribution {
+        font-size: 8px;
+        background: rgba(255,255,210,0.7);
+    }
+    .glow-pulse {
+        animation: pulseGlow 2s infinite;
+    }
+    @keyframes pulseGlow {
+        0% { opacity: 0.2; r: 300000; }
+        50% { opacity: 0.45; r: 380000; }
+        100% { opacity: 0.2; r: 300000; }
+    }
+    /* fix circle radius animation, leaflet overrides */
+    .glow-pulse {
+        transition: all 0.2s;
+    }
+    .info.legend-custom i, .info.legend-custom {
+        font-size: 12px;
+    }
+    .custom-marker-icon {
+        transition: transform 0.1s;
+    }
+    .custom-marker-icon:hover {
+        transform: scale(1.1);
+    }
+
+
+</style>
+</body>
+
