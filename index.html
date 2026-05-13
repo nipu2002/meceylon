@@ -36,6 +36,24 @@
     color: black;
     text-decoration: none;
 }
+    body {
+    background-color: #fdf0d8;
+    /*background-image: radial-gradient(circle, #b8860b 2px, transparent 2px);*/
+    background-image: url(images/download.jpg);
+    background-size:auto;
+    background-position: center;
+    background-repeat:  repeat;
+    animation: float 30s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 80px 80px;
+    }
+}
     h1, h2, h3, h4, h5, .logo-text {
       font-family: 'Playfair Display', serif;
     }
