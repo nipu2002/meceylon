@@ -796,6 +796,222 @@
       overflow: hidden;
     }
 
+    /*spice elements*/
+    
+        /* Container for floating spice elements */
+        .spice-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allows clicking through spices */
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        /* Individual spice elements */
+        .spice {
+            position: absolute;
+            opacity: 0;
+            filter: drop-shadow(5px 8px 12px rgba(0,0,0,0.2));
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        /* When visible class is added */
+        .spice.visible {
+            opacity: 1;
+        }
+
+        /* Ginger root - left side */
+        .ginger-left {
+            left: -80px;
+            top: 20%;
+            width: 180px;
+            height: auto;
+            transform: rotate(-15deg);
+            transition: left 0.8s ease-out, opacity 0.8s ease;
+        }
+
+        .ginger-left.visible {
+            left: 20px;
+        }
+
+        /* Ginger root - bottom left */
+        .ginger-bottom-left {
+            left: -100px;
+            bottom: 10%;
+            width: 150px;
+            height: auto;
+            transform: rotate(25deg);
+            transition: left 0.8s ease-out 0.2s, opacity 0.8s ease 0.2s;
+        }
+
+        .ginger-bottom-left.visible {
+            left: 15px;
+        }
+
+        /* Pepper cluster - right side */
+        .pepper-right {
+            right: -80px;
+            top: 15%;
+            width: 160px;
+            height: auto;
+            transform: rotate(10deg);
+            transition: right 0.8s ease-out, opacity 0.8s ease;
+        }
+
+        .pepper-right.visible {
+            right: 20px;
+        }
+
+        /* Pepper cluster - bottom right */
+        .pepper-bottom-right {
+            right: -100px;
+            bottom: 15%;
+            width: 140px;
+            height: auto;
+            transform: rotate(-20deg);
+            transition: right 0.8s ease-out 0.2s, opacity 0.8s ease 0.2s;
+        }
+
+        .pepper-bottom-right.visible {
+            right: 15px;
+        }
+
+        /* Small individual peppercorns scattered */
+        .peppercorn {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            background: #2d2d2d;
+            border-radius: 50%;
+            box-shadow: inset -2px -2px 0 #1a1a1a, 0 4px 8px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: all 0.6s ease-out;
+        }
+
+        .peppercorn::after {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 25%;
+            width: 30%;
+            height: 30%;
+            background: #4a4a4a;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .peppercorn.visible {
+            opacity: 1;
+        }
+
+        /* Positions for peppercorns */
+        .peppercorn-1 { bottom: 25%; left: 8%; width: 22px; height: 22px; transition-delay: 0.4s; }
+        .peppercorn-2 { top: 65%; left: 5%; width: 18px; height: 18px; transition-delay: 0.5s; }
+        .peppercorn-3 { bottom: 40%; right: 10%; width: 24px; height: 24px; transition-delay: 0.45s; }
+        .peppercorn-4 { top: 80%; right: 5%; width: 20px; height: 20px; transition-delay: 0.55s; }
+        .peppercorn-5 { top: 30%; right: 8%; width: 16px; height: 16px; transition-delay: 0.6s; }
+
+        /* Thin slice of ginger (decoration) */
+        .ginger-slice {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            background: #e8c89a;
+            border-radius: 60% 40% 50% 50%;
+            opacity: 0;
+            transition: all 0.5s ease-out;
+            box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
+        }
+
+        .ginger-slice::before {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+            background: #f0dbb4;
+            border-radius: 50%;
+        }
+
+        .ginger-slice.visible {
+            opacity: 0.85;
+        }
+
+        .ginger-slice-1 { bottom: 30%; left: 12%; width: 40px; height: 38px; transition-delay: 0.35s; transform: rotate(15deg); }
+        .ginger-slice-2 { top: 50%; right: 12%; width: 35px; height: 32px; transition-delay: 0.5s; transform: rotate(-25deg); }
+
+        /* Main page content */
+        .content {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 100px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #5a3a1a;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease-out 0.3s both;
+        }
+
+        p {
+            font-size: 18px;
+            color: #6b4c2c;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 0.6s ease-out 0.5s both;
+        }
+
+        button {
+            background: #c46b2b;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-size: 18px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: fadeInUp 0.6s ease-out 0.7s both;
+        }
+
+        button:hover {
+            background: #a8571f;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .ginger-left, .ginger-bottom-left,
+            .pepper-right, .pepper-bottom-right {
+                width: 100px;
+            }
+            .content {
+                padding: 40px 20px;
+            }
+            h1 { font-size: 32px; }
+            .peppercorn-1, .peppercorn-2 { display: none; }
+        }
+    
+
     
     
   </style>
@@ -1276,6 +1492,31 @@
   </div>
 </div>
 
+  <!---spice elements appear-->
+  
+    <!-- Spice container - all elements will appear here -->
+    <div class="spice-container">
+        
+        <!-- GINGER ELEMENTS (Left Side) -->
+        <img class="spice ginger-left" src="https://cdn.pixabay.com/photo/2017/01/31/20/30/ginger-2027536_640.png" alt="Fresh Ginger Root">
+        <img class="spice ginger-bottom-left" src="https://cdn.pixabay.com/photo/2016/03/26/19/47/ginger-1281268_640.png" alt="Ginger Root">
+        
+        <!-- PEPPER ELEMENTS (Right Side) -->
+        <img class="spice pepper-right" src="https://cdn.pixabay.com/photo/2019/07/24/05/39/pepper-4359029_640.png" alt="Black Peppercorns">
+        <img class="spice pepper-bottom-right" src="https://cdn.pixabay.com/photo/2014/12/21/23/28/peppercorns-575447_640.png" alt="Peppercorns Cluster">
+        
+        <!-- Decorative Peppercorns (scattered) -->
+        <div class="peppercorn peppercorn-1"></div>
+        <div class="peppercorn peppercorn-2"></div>
+        <div class="peppercorn peppercorn-3"></div>
+        <div class="peppercorn peppercorn-4"></div>
+        <div class="peppercorn peppercorn-5"></div>
+        
+        <!-- Ginger Slices -->
+        <div class="ginger-slice ginger-slice-1"></div>
+        <div class="ginger-slice ginger-slice-2"></div>
+    </div>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -1552,6 +1793,36 @@ const scrollContainer = document.getElementById('certificatesScroll');
     
     // Initialize auto-scroll
     startAutoScroll();
+
+  //spices elements appear
+   // Wait for the entire page to load completely
+        window.addEventListener('load', function() {
+            
+            // Add 'visible' class to all spice elements with staggered delays
+            const spiceElements = document.querySelectorAll('.ginger-left, .ginger-bottom-left, .pepper-right, .pepper-bottom-right, .peppercorn, .ginger-slice');
+            
+            // Make all spice elements visible
+            spiceElements.forEach(element => {
+                element.classList.add('visible');
+            });
+            
+            // Optional: Add a subtle floating animation after they appear
+            setTimeout(() => {
+                spiceElements.forEach(element => {
+                    if (element.classList.contains('ginger-left') || element.classList.contains('ginger-bottom-left') ||
+                        element.classList.contains('pepper-right') || element.classList.contains('pepper-bottom-right')) {
+                        element.style.transition = 'transform 4s ease-in-out';
+                        setInterval(() => {
+                            const currentRotate = getComputedStyle(element).transform;
+                            element.style.transform = `rotate(${Math.sin(Date.now() / 2000) * 5}deg)`;
+                        }, 100);
+                    }
+                });
+            }, 1000);
+        });
+        
+        // Alternative: If you want to use local images, replace the src URLs with your own
+        // Just change the src attributes in the img tags above to your local image paths
 
 
 </script>
