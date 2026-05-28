@@ -28,54 +28,99 @@
 
 
 
-    * {
+   * {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      box-sizing: border-box;  
     }
-    
-
-
-
+  
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: #ffffff;
+      background: #a9df3d67;
+      background-image: url(images/download.jpg);
+      /*background: rgba(121, 152, 81, 0.377);*/
       overflow-x: hidden;
-      color: #0c0c0c;
-      padding-top: 60px;
+      color:black;
     }
+
+body {
+    background-color: #d0faac57;
+    /*background-image: radial-gradient(circle, #b8860b 2px, transparent 2px);*/
+    /*background-image: url(images/download.jpg);*/
+    background-clip: border-box;
     
+    background-size:auto;
+    background-position: center;
+    background-repeat:  repeat;
+    animation: float 10s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 80px 80px;
+    }
+}
+    a {
+    color: black;
+    text-decoration: none;
+}
     h1, h2, h3, h4, h5, .logo-text {
       font-family: 'Playfair Display', serif;
     }
     
+ /* logo Line Premium */
+    .logo-line-premium {
+     /* background: linear-gradient(90deg, #849532 0%,  #5A641E 100%);*/
+     /*background: rgb(170,51,60);*/
+     background: rgb(178, 215, 86);
+      color: #DFEBC8;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 1rem 0;
+      font-weight: 500;
+      letter-spacing: 2px;
+      border-top: 1px solid rgba(232, 181, 106, 0.3);
+      border-bottom: 1px solid rgba(232, 181, 106, 0.3);
+      z-index: 2;
+      margin-top: 60px;
+      position: relative;
+      
+    }
+
     /* Premium Navbar */
     .premium-nav {
       
-       background:  rgb(235, 162, 36);
-       
+       /*background: rgb(235, 162, 36);*/
+      /* background: rgb(178, 215, 86);lightgreen*/
+      background:  rgba(46, 108, 42, 0.944);
       backdrop-filter: blur(8px);
       box-shadow: 0 4px 20px rgba(0,0,0,0.03);
       transition: all 0.3s;
+     
+      position: fixed;
     }
     
     .logo-text {
       font-size: 1.8rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #9B4B2C 0%, #CB7B3C 100%);
+      background: linear-gradient(135deg, #63c46e 0%, #61a34f 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       letter-spacing: -0.5px;
     }
     .brand-logo{
-      max-height: 52px;
+      max-height: 50px;
       width:auto;
-      margin-right: 10px;
+      
+      margin-left: 50%;
     }
     .nav-link-premium {
       font-weight: 500;
-      color: #4A3729 !important;
+      color: white !important;
       margin: 0 0.5rem;
       position: relative;
       transition: all 0.3s ease;
@@ -103,7 +148,7 @@
     }
     
     .cart-badge-premium {
-      background: linear-gradient(135deg, #CB7B3C, #E8B56A);
+      background: linear-gradient(135deg, #5cbb55, #3d8340);
       color: white;
       border-radius: 30px;
       padding: 0 8px;
@@ -111,8 +156,69 @@
       margin-left: 6px;
       font-weight: 600;
     }
-    
 
+    /* ===== HOVER DROPDOWN STYLES ===== */
+        @media (min-width: 992px) {
+            /* Make dropdown appear on hover */
+            .dropdown:hover .dropdown-menu {
+                display: block;
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            /* Initially hide dropdown */
+            .dropdown .dropdown-menu {
+                display: block;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(10px);
+                transition: all 0.2s ease;
+                margin-top: 0;
+                border-radius: 8px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                border: none;
+            }
+            
+            /* Keep dropdown visible when hovering over it */
+            .dropdown-menu:hover {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            /* Rotate arrow on hover */
+            .dropdown:hover .dropdown-toggle::after {
+                transform: rotate(180deg);
+            }
+            
+            .dropdown-toggle::after {
+                transition: transform 0.2s;
+            }
+            
+            /* Style dropdown items */
+            .dropdown-item {
+                padding: 8px 20px;
+                transition: all 0.2s;
+            }
+            
+            .dropdown-item:hover {
+                background-color: #f8f9fa;
+                color: #CB7B3C;
+                padding-left: 25px;
+            }
+        }
+        
+        /* Mobile: Keep click functionality */
+        @media (max-width: 991px) {
+            .dropdown-menu {
+                border: none;
+                box-shadow: none;
+                background: #f8f9fa;
+                margin-left: 15px;
+            }
+        }
+    
         
 
         /* Orangish color palette: deep amber, burnt orange, saffron, light peach */
@@ -160,14 +266,14 @@
             padding-top: 0.75rem;
         }
 
-        /* decorative spice pattern */
+        /* decorative spice pattern 
         .spice-divider {
             height: 6px;
             background: repeating-linear-gradient(90deg, var(--primary-orange), var(--golden-glow), var(--primary-orange));
             width: 120px;
             margin: 1rem auto 0;
             border-radius: 4px;
-        }
+        }*/
 
         /* mission & vision cards */
         .mv-grid {
@@ -281,20 +387,7 @@
 
 /*map*/
 
-* {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(145deg, #f5efe6 0%, #e8dfd1 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-        }
+
         .map-card {
             max-width: 1400px;
             width: 100%;
@@ -617,19 +710,32 @@
 <!-- Premium Navbar -->
 <nav class="navbar navbar-expand-lg premium-nav fixed-top">
   <div class="container-fluid px-4 px-lg-5">
-    <a class="navbar-brand logo-text" href="#"><img src="images/MeCeylon_LOGO-01-1-1024x542.jpg" class="brand-logo" style="color: #CB7B3C;"></img></a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#premiumNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="premiumNavbar">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-        <li class="nav-item"><a class="nav-link nav-link-premium" href="homee.html" data-page="home">Home</a></li>
-        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="products">Products</a></li>
-        <li class="nav-item"><a class="nav-link nav-link-premium" href="aboutus.html" data-page="about">About Us</a></li>
-        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="contact">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="index.html" data-page="home">Home</a></li>
+        <!-- Products Dropdown - Properly Structured -->
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-link-premium dropdown-toggle" href="#" id="productsDropdownLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-page="products">
+            Products
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="productsDropdownLink">
+            <li><a class="dropdown-item" href="#">Products Range</a></li>
+            <li><a class="dropdown-item" href="#">Buy Now</a></li>
+            <!--<li><a class="dropdown-item" href="#"></a></li>
+            <li><a class="dropdown-item" href="#"></a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">All Products</a></li>--->
+          </ul>
+        </li>
+        <li class="nav-item"><a  class="nav-link nav-link-premium" href="aboutus.html" >About Us</a></li>
+        <li class="nav-item"><a   class="nav-link nav-link-premium" href="contact.html" >Contact Us</a></li>
         <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="blogs">Blogs</a></li>
-       <!------ <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signup">Signup</a></li>
-        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signin">Signin</a></li>----->
+        <!--<li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signup">Signup</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signin">Signin</a></li>--->
         <li class="nav-item">
           <a class="nav-link nav-link-premium" href="#" data-page="cart">
             <i class="fas fa-shopping-bag"></i> Cart <span id="cartCountNav" class="cart-badge-premium">0</span>
@@ -639,6 +745,13 @@
     </div>
   </div>
 </nav>
+
+<!-- lOGO Line -->
+    <div class="logo-line-premium">
+      <div class="logo-text">
+            <a class="navbar-brand logo-text" href="#"><img src="images/MeCeylon_LOGO-01-1-1024x542.jpg" class="brand-logo" style="color: #CB7B3C;"></img></a>
+      </div>
+    </div>
 
 
 
