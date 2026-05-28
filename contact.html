@@ -43,29 +43,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
     <style>
-        /* Custom styles - Remove blue color from all links */
-        a {
-            color:  #fbb264;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
 
-        a:hover {
-            color:  #fbb264;
-            text-decoration: underline;
-        }
-
-       
+   * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;  
+    }
   
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: white;
+      background: #a9df3d67;
+      background-image: url(images/download.jpg);
+      /*background: rgba(121, 152, 81, 0.377);*/
       overflow-x: hidden;
-      color: #080a09;
-      padding-top: 100px;
-     
-      background-blend-mode:screen;
+      color:black;
     }
+
+body {
+    background-color: #d0faac57;
+    /*background-image: radial-gradient(circle, #b8860b 2px, transparent 2px);*/
+    /*background-image: url(images/download.jpg);*/
+    background-clip: border-box;
+    
+    background-size:auto;
+    background-position: center;
+    background-repeat:  repeat;
+    animation: float 10s linear infinite;
+}
+
+/* Canvas for falling spices - this is the background */
+        #spiceCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            pointer-events: none; /* Allows clicking through to content */
+            z-index: 0.5;
+            
+        }
+
+@keyframes float {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 80px 80px;
+    }
+}
     a {
     color: black;
     text-decoration: none;
@@ -74,13 +100,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       font-family: 'Playfair Display', serif;
     }
 
+  /* logo Line Premium */
+    .logo-line-premium {
+     /* background: linear-gradient(90deg, #849532 0%,  #5A641E 100%);*/
+     /*background: rgb(170,51,60);*/
+     background: rgb(178, 215, 86);
+      color: #DFEBC8;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 1rem 0;
+      font-weight: 500;
+      letter-spacing: 2px;
+      border-top: 1px solid rgba(232, 181, 106, 0.3);
+      border-bottom: 1px solid rgba(232, 181, 106, 0.3);
+      z-index: 2;
+      margin-top: 60px;
+      position: relative;
+      
+    }
+    
     /* Premium Navbar */
     .premium-nav {
       
-       background: rgb(235, 162, 36);
+       /*background: rgb(235, 162, 36);*/
+      /* background: rgb(178, 215, 86);lightgreen*/
+      background:  rgba(46, 108, 42, 0.944);
       backdrop-filter: blur(8px);
       box-shadow: 0 4px 20px rgba(0,0,0,0.03);
       transition: all 0.3s;
+     
+      position: fixed;
     }
     
     .logo-text {
@@ -93,13 +142,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       letter-spacing: -0.5px;
     }
     .brand-logo{
-      max-height: 60px;
+      max-height: 50px;
       width:auto;
-      margin-right: 10px;
+      
+      margin-left: 50%;
     }
     .nav-link-premium {
       font-weight: 500;
-      color: #4A3729 !important;
+      color: white !important;
       margin: 0 0.5rem;
       position: relative;
       transition: all 0.3s ease;
@@ -187,6 +237,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 padding-left: 25px;
             }
         }
+
+    /* ===== HOVER DROPDOWN STYLES ===== */
+        @media (min-width: 992px) {
+            /* Make dropdown appear on hover */
+            .dropdown:hover .dropdown-menu {
+                display: block;
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            /* Initially hide dropdown */
+            .dropdown .dropdown-menu {
+                display: block;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(10px);
+                transition: all 0.2s ease;
+                margin-top: 0;
+                border-radius: 8px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                border: none;
+            }
+            
+            /* Keep dropdown visible when hovering over it */
+            .dropdown-menu:hover {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            /* Rotate arrow on hover */
+            .dropdown:hover .dropdown-toggle::after {
+                transform: rotate(180deg);
+            }
+            
+            .dropdown-toggle::after {
+                transition: transform 0.2s;
+            }
+            
+            /* Style dropdown items */
+            .dropdown-item {
+                padding: 8px 20px;
+                transition: all 0.2s;
+            }
+            
+            .dropdown-item:hover {
+                background-color: #f8f9fa;
+                color: #CB7B3C;
+                padding-left: 25px;
+            }
+        }
         
         /* Mobile: Keep click functionality */
         @media (max-width: 991px) {
@@ -204,6 +306,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     height: 15vh;
     background-position: relative;
     text-align: center;
+    margin-top: 20px;
     padding-top: 20px;
     background-color: #e9f1c7ac;
     
@@ -349,16 +452,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
-<!-- Premium Navbar -->
+    <!-- Premium Navbar -->
 <nav class="navbar navbar-expand-lg premium-nav fixed-top">
   <div class="container-fluid px-4 px-lg-5">
-    <a class="navbar-brand logo-text" href="#"><img src="images/MeCeylon_LOGO-01-1-1024x542.jpg" class="brand-logo" style="color: #CB7B3C;"></img></a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#premiumNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="premiumNavbar">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-        <li class="nav-item"><a class="nav-link nav-link-premium" href="homee.html" data-page="home">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="index.html" data-page="home">Home</a></li>
         <!-- Products Dropdown - Properly Structured -->
         <li class="nav-item dropdown">
           <a class="nav-link nav-link-premium dropdown-toggle" href="#" id="productsDropdownLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-page="products">
@@ -367,17 +470,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <ul class="dropdown-menu" aria-labelledby="productsDropdownLink">
             <li><a class="dropdown-item" href="#">Products Range</a></li>
             <li><a class="dropdown-item" href="#">Buy Now</a></li>
-            <li><a class="dropdown-item" href="#"></a></li>
+            <!--<li><a class="dropdown-item" href="#"></a></li>
             <li><a class="dropdown-item" href="#"></a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">All Products</a></li>
+            <li><a class="dropdown-item" href="#">All Products</a></li>--->
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link nav-link-premium" href="aboutus.html" >About Us</a></li>
-        <li class="nav-item"><a class="nav-link nav-link-premium" href="contact.php" >Contact Us</a></li>
+        <li class="nav-item"><a  class="nav-link nav-link-premium" href="aboutus.html" >About Us</a></li>
+        <li class="nav-item"><a   class="nav-link nav-link-premium" href="contact.html" >Contact Us</a></li>
         <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="blogs">Blogs</a></li>
-       <!---- <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signup">Signup</a></li>
-        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signin">Signin</a></li>------->
+        <!--<li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signup">Signup</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-premium" href="#" data-page="signin">Signin</a></li>--->
         <li class="nav-item">
           <a class="nav-link nav-link-premium" href="#" data-page="cart">
             <i class="fas fa-shopping-bag"></i> Cart <span id="cartCountNav" class="cart-badge-premium">0</span>
@@ -387,6 +490,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
   </div>
 </nav>
+
+<!-- lOGO Line -->
+    <div class="logo-line-premium">
+      <div class="logo-text">
+            <a class="navbar-brand logo-text" href="#"><img src="images/MeCeylon_LOGO-01-1-1024x542.jpg" class="brand-logo" style="color: #CB7B3C;"></img></a>
+      </div>
+    </div>
+
+
 <!-- Page Header -->
 <section class="contact-page-header">
     <div class="container" >
